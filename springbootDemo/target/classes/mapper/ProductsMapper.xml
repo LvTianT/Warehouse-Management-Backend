@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.examplorfotg.springbootdemo.mapper.ProductsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.Products">
+        <id column="ProductID" property="productid" />
+        <result column="ProductName" property="productname" />
+        <result column="ProductDescription" property="productdescription" />
+        <result column="PurchasePrice" property="purchaseprice" />
+        <result column="SalesPrice" property="salesprice" />
+        <result column="Supplier" property="supplier" />
+        <result column="WarehouseID" property="warehouseid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ProductID, ProductName, ProductDescription, PurchasePrice, SalesPrice, Supplier, WarehouseID
+    </sql>
+
+</mapper>

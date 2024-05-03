@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.examplorfotg.springbootdemo.mapper.UsertransactionsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.Usertransactions">
+        <id column="TransactionID" property="transactionid" />
+        <result column="UserID" property="userid" />
+        <result column="ProductID" property="productid" />
+        <result column="WarehouseID" property="warehouseid" />
+        <result column="Quantity" property="quantity" />
+        <result column="TransactionDate" property="transactiondate" />
+        <result column="Remark" property="remark" />
+        <result column="Staff" property="staff" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        TransactionID, UserID, ProductID, WarehouseID, Quantity, TransactionDate, Remark, Staff
+    </sql>
+
+</mapper>
