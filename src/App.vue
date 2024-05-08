@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+      <router-view/>
   </div>
 </template>
 
+
+<script>
+export default {
+  name: 'App',
+  components: {},
+  data() {
+    return {
+      //重新获取缓存的用户信息
+      user:JSON.parse(sessionStorage.getItem('CurUser')),
+    }
+  },
+
+  watch: {
+    '$store.state.menu': {
+      //监听menu状态变化，刷新后旧值为空，持久化处理后menu重新赋值发生变化，判断为空且用户存在且用户账号存在，调用store中的setMenu方法重置menu
+      handler(val, old) {
+        if (!old && this.user && this.user.no) {
+          this.$store.commit("setMenu",val)
+        }
+      },
+      immediate:true
+    }
+  },
+
+  }
+</script>
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+ height: 100%;
 }
 
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
