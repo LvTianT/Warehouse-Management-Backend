@@ -5,18 +5,25 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.Usertransactions">
         <id column="TransactionID" property="transactionid" />
-        <result column="UserID" property="userid" />
+        <result column="InStaff" property="instaff" />
+        <result column="OutStaff" property="outstaff" />
         <result column="ProductID" property="productid" />
-        <result column="WarehouseID" property="warehouseid" />
-        <result column="Quantity" property="quantity" />
-        <result column="TransactionDate" property="transactiondate" />
+        <result column="InQuantity" property="inquantity" />
+        <result column="OutQuantity" property="outquantity" />
+        <result column="Intime" property="intime" />
+        <result column="Outtime" property="outtime" />
         <result column="Remark" property="remark" />
-        <result column="Staff" property="staff" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        TransactionID, UserID, ProductID, WarehouseID, Quantity, TransactionDate, Remark, Staff
+        TransactionID, InStaff, OutStaff, ProductID, InQuantity, OutQuantity,Intime,Outtime, Remark
     </sql>
-
+    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Usertransactions">
+        select a.*,b.ProductName productname,c.Name warehousename,d.Name goodstypename,
+               (select u.name from user u where u.Id=a.InStaff)instaffname,
+               (select u.name from user u where u.Id=a.OutStaff)outstaffname
+        from usertransactions a,products b,warehouses c,goodstype d
+            ${ew.customSqlSegment}
+    </select>
 </mapper>

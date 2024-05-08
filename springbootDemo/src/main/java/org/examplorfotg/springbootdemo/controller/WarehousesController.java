@@ -12,6 +12,7 @@ import org.examplorfotg.springbootdemo.entity.Warehouses;
 import org.examplorfotg.springbootdemo.service.WarehousesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,7 @@ public class WarehousesController {
     public Result listPage(@RequestBody QueryPageParam query){
         HashMap param = query.getParam();
         String name = (String)param.get("name");
-
+        String warehouseId = (String)param.get("warehouseId");
         Page<Warehouses> page = new Page();
         page.setCurrent(query.getPageNum());
         page.setSize(query.getPageSize());
@@ -50,6 +51,9 @@ public class WarehousesController {
         LambdaQueryWrapper<Warehouses> lambdaQueryWrapper = new LambdaQueryWrapper();
         if(StringUtils.isNotBlank(name) && !"null".equals(name)){
             lambdaQueryWrapper.like(Warehouses::getName,name);
+        }
+        if(StringUtils.isNotBlank( warehouseId) && !"null".equals( warehouseId)){
+            lambdaQueryWrapper.eq(Warehouses::getWarehouseId,warehouseId);
         }
 
         IPage result = warehousesService.pageCC(page,lambdaQueryWrapper);

@@ -18,8 +18,8 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "Id", type = IdType.AUTO)
+    private Integer Id;
 
     @ApiModelProperty(value = "账号")
     private String no;
@@ -39,9 +39,12 @@ public class User implements Serializable {
     private String phone;
 
     @ApiModelProperty(value = "角色 0超级管理员，1管理员，2普通账号")
+    @TableField("roleId")
     private Integer roleId;
 
     @ApiModelProperty(value = "是否有效，Y有效，其他无效")
     @TableField("isValid")
     private String isvalid;
+    @TableField("email")
+    private String email;
 }

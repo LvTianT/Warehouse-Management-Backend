@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.examplorfotg.springbootdemo.mapper.LoanregisterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.Loanregister">
+        <id column="LoanID" property="loanid" />
+        <result column="ProductID" property="productid" />
+        <result column="Quantity" property="quantity" />
+        <result column="Date" property="date" />
+        <result column="Borrower" property="borrower" />
+        <result column="operate" property="Operate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        LoanID, ProductID, Quantity, Date, Borrower,operate
+    </sql>
+    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Loanregister">
+        select * from loanregister
+            ${ew.customSqlSegment}
+    </select>
+</mapper>

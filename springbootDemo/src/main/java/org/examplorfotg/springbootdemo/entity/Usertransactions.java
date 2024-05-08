@@ -1,6 +1,5 @@
 package org.examplorfotg.springbootdemo.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -21,34 +20,38 @@ public class Usertransactions implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
     @TableId(value = "TransactionID", type = IdType.AUTO)
-    private Integer transactionId;
+    private Integer transactionid;
 
-    @ApiModelProperty(value = "用户ID")
-    @TableField("UserID")
-    private Integer userId;
+    @ApiModelProperty(value = "出库人ID")
+    @TableField("OutStaff")
+    private Integer outstaff;
+
+    @ApiModelProperty(value = "入库人ID")
+    @TableField("InStaff")
+    private Integer instaff;
 
     @ApiModelProperty(value = "产品ID")
     @TableField("ProductID")
-    private Integer productId;
+    private Integer productid;
 
-    @ApiModelProperty(value = "仓库ID")
-    @TableField("WarehouseID")
-    private Integer warehouseId;
+    @ApiModelProperty(value = "入库量")
+    @TableField("InQuantity")
+    private Integer inquantity;
 
-    @ApiModelProperty(value = "出/入库人员")
-    @TableField("StaffId")
-    private Integer staffId;
+    @ApiModelProperty(value = "出库量")
+    @TableField("OutQuantity")
+    private Integer outquantity;
 
-    @ApiModelProperty(value = "出/入库数量")
-    @TableField("Quantity")
-    private Integer quantity;
-
-    @ApiModelProperty(value = "时间")
-    @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty(value = "出库时间")
+    @TableField("Outtime")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
-    private LocalDateTime time;
+    private LocalDateTime outtime;
+
+    @ApiModelProperty(value = "入库时间")
+    @TableField("Intime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    private LocalDateTime intime;
 
     @ApiModelProperty(value = "备注")
     @TableField("Remark")

@@ -15,9 +15,9 @@ import javax.annotation.Resource;
 @Service
 public class ProductsServiceImpl extends ServiceImpl<ProductsMapper, Products> implements ProductsService {
     @Resource
-    private ProductsMapper goodsMapper;
+    private ProductsMapper productsMapper;
     @Override
     public IPage pageCC(IPage<Products> page, Wrapper wrapper) {
-        return goodsMapper.pageCC(page,wrapper);
+        return productsMapper.pageCC(page,wrapper);
     }
 }
