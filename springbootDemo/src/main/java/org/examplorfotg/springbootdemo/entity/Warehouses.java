@@ -17,8 +17,8 @@ public class Warehouses implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键")
-    @TableId(value = "Id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "warehouseId", type = IdType.AUTO)
+    private Integer warehouseId;
 
     @ApiModelProperty(value = "仓库名")
     @TableField("Name")

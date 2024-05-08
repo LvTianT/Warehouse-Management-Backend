@@ -2,16 +2,17 @@ package org.examplorfotg.springbootdemo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.examplorfotg.springbootdemo.common.QueryPageParam;
-import org.examplorfotg.springbootdemo.common.Result;
+import org.examplorfotg.springbootdemo.common.*;
 import org.examplorfotg.springbootdemo.entity.User;
 import org.examplorfotg.springbootdemo.entity.Menu;
+import org.examplorfotg.springbootdemo.entity.request.UserRegisterRequest;
+import org.examplorfotg.springbootdemo.exception.BusinessException;
 import org.examplorfotg.springbootdemo.service.MenuService;
 import org.examplorfotg.springbootdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,8 +48,8 @@ public class UserController {
     }
     //删除
     @GetMapping("/del")
-    public Result del(@RequestParam String id){
-        return userService.removeById(id)?Result.suc():Result.fail();
+    public Result del(@RequestParam String Id){
+        return userService.removeById(Id)?Result.suc():Result.fail();
     }
 
 
@@ -59,10 +60,10 @@ public class UserController {
                 .eq(User::getNo,user.getNo())
                 .eq(User::getPassword,user.getPassword()).list();
 
-
+        //取第1个用户信息
         if(list.size()>0){
             User user1 = (User)list.get(0);
-            List menuList = menuService.lambdaQuery().like(Menu::getMenuright,user1.getRoleId()).list();
+            List menuList = menuService.lambdaQuery().like(Menu::getRoleid,user1.getRoleId()).list();
             HashMap res = new HashMap();
             res.put("user",user1);
             res.put("menu",menuList);
@@ -70,7 +71,22 @@ public class UserController {
         }
         return Result.fail();
     }
-
+    @PostMapping("/register")
+    public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
+    //校验
+        if(userRegisterRequest == null){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        String no = userRegisterRequest.getNo();
+        String password = userRegisterRequest.getPassword();
+        String checkPassword = userRegisterRequest.getCheckPassword();
+        String email = userRegisterRequest.getEmail();
+        if(StringUtils.isAnyBlank(no,password,checkPassword,email)){
+                 return null;
+        }
+        long result=userService.userRegister(no,password,checkPassword,email);
+        return ResultUtils.success(result);
+    }
     //修改
     @PostMapping("/mod")
     public boolean mod(@RequestBody User user){
@@ -155,7 +171,7 @@ public class UserController {
         String name = (String)param.get("name");
         String sex = (String)param.get("sex");
         String roleId = (String)param.get("roleId");
-
+        String email = (String)param.get("email");
         Page<User> page = new Page();
         page.setCurrent(query.getPageNum());
         page.setSize(query.getPageSize());
@@ -169,6 +185,9 @@ public class UserController {
         }
         if(StringUtils.isNotBlank(roleId)){
             lambdaQueryWrapper.eq(User::getRoleId,roleId);
+        }
+        if(StringUtils.isNotBlank(email) && !"null".equals(email)){
+            lambdaQueryWrapper.like(User::getEmail,email);
         }
 
         //IPage result = userService.pageC(page);

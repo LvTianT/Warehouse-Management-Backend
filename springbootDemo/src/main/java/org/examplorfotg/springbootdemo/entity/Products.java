@@ -9,15 +9,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author wms
- * @since 2024-04-18
- */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="Products对象", description="")
@@ -49,14 +43,14 @@ public class Products implements Serializable {
     @TableField("Supplier")
     private String supplier;
 
+    @ApiModelProperty(value = "分类")
+    @TableField("productsType")
+    private Integer productsType;
+
+    @Getter
     @ApiModelProperty(value = "仓库ID")
     @TableField("WarehouseID")
     private Integer warehouseId;
-
-
-    @ApiModelProperty(value = "产品数量")
-    @TableField("Quantity")
-    private Integer quantity;
 
 
 }

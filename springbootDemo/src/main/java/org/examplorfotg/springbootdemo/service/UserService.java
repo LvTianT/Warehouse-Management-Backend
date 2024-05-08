@@ -10,4 +10,5 @@ public interface UserService extends IService<User> {
     IPage pageC(IPage<User> page);
 
     IPage pageCC(IPage<User> page, Wrapper wrapper);
+    long userRegister(String userAccount, String userPassword, String checkPassword,String email);
 }

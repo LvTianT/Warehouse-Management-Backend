@@ -12,7 +12,12 @@ public class Result {
     public static Result fail() {
         return result(400, "失败", 0L, null);
     }
-
+    public static Result lowAlert() {
+        return result(400, "商品库存不足,无法出库,请即时补货!", 0L, null);
+    }
+    public static Result noProduct() {
+        return result(400, "此商品不存在", 0L, null);
+    }
     public static Result suc() {
         return result(200, "成功", 0L, null);
     }

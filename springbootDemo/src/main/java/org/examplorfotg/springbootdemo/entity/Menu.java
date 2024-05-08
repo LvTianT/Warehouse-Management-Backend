@@ -1,6 +1,8 @@
 package org.examplorfotg.springbootdemo.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,7 +16,7 @@ import java.io.Serializable;
 public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId(value = "Id", type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty(value = "菜单编码")
@@ -30,16 +32,16 @@ public class Menu implements Serializable {
     private String menulevel;
 
     @ApiModelProperty(value = "菜单的父code")
-    @TableField("menuParentCode")
-    private String menuparentcode;
+    @TableField("parentMenuCode")
+    private String parentmenucode;
 
     @ApiModelProperty(value = "点击触发的函数")
-    @TableField("menuClick")
+    @TableField("click")
     private String menuclick;
 
-    @ApiModelProperty(value = "权限 0超级管理员，1表示管理员，2表示普通用户，可以用逗号组合使用")
-    @TableField("menuRight")
-    private String menuright;
+    @ApiModelProperty(value = "权限 0 高级管理员 1 管理员 2 普通用户")
+    @TableField("roleId")
+    private String roleid;
 
     @TableField("menuComponent")
     private String menucomponent;
