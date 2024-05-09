@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top: 10px; margin-left: 0px;">
+    <div style="margin-top: 10px; ">
       <form class="form" style="display: inline-block;margin-right: 676px;margin-left:10px;transform: translateY(3px);">
         <label for="search">
           <input
@@ -139,7 +139,7 @@
     </el-table>
     
      <el-pagination
-      style="margin-top: 10px; margin-left: 15px"
+      style="margin-top: 10px; margin-left: 15px;margin-bottom:120px;"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
@@ -161,7 +161,7 @@
         :visible.sync="innerVisible"
         append-to-body
       >
-        <SelectUser @doSelectUser="doSelectUser"></SelectUser>
+        <Usertable @doSelectUser="doSelectUser"></Usertable>
         <span slot="footer" class="dialog-footer">
           <el-button @click="innerVisible = false" >取 消</el-button>
           <el-button type="primary" @click="confirmUser">确 定</el-button>
@@ -198,15 +198,16 @@
       <span slot="footer" class="dialog-footer">
         <el-button
           @click="dialogVisible = false"
-          style="transform: translate(15px,-40px); margin-right: 10px;"
+          style="transform: translate(15px,-25px); margin-right: 10px;"
           size="medium"
           >取 消</el-button
         >
         <el-button
           type="primary"
           @click="save"
-          style="transform:  translate(15px,-40px);"
+          style="transform:  translate(15px,-25px);"
           size="medium"
+
           >提 交</el-button
         >
       </span>
@@ -216,10 +217,10 @@
 </template>
 
 <script>
-import SelectUser from "../user/Usertable.vue";
+import Usertable from "../user/Usertable.vue";
 export default {
   name: "Inventorycheck",
-    components: { SelectUser },
+    components: { Usertable },
   data() {
     return {
       tempUser: {},
@@ -296,7 +297,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.tableData = res.data;
             this.total = res.total;
           } else {
@@ -315,10 +316,7 @@ export default {
       this.pageNum = val;
       this.loadPost();
     },
-    
-    resetParam() {
-      this.name = "";
-    },
+
     resetForm() {
       this.$refs.form.resetFields();
     },
@@ -329,7 +327,7 @@ export default {
         .get(this.$httpUrl + "/inventorycheck/del?id=" + id)
         .then((res) => {
           console.log(res);
-          if (res.status== 200) {
+          if (res.status=== 200) {
             this.$message({
               message: "删除成功！",
               type: "success",
@@ -359,7 +357,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "添加成功！",
               type: "success",
@@ -387,7 +385,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "修改成功！",
               type: "success",
@@ -414,17 +412,6 @@ export default {
         }
       });
     },
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
-      this.pageNum = 1;
-      this.pageSize = val;
-      this.loadPost();
-    },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-      this.pageNum = val;
-      this.loadPost();
-    },
 
     resetParam() {
       this.checker = "";
@@ -433,7 +420,7 @@ export default {
       this.$axios
         .get(this.$httpUrl + "/user/list")
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.UserData = res.data;
           } else {
             alert("获取数据失败");
@@ -450,7 +437,7 @@ export default {
           },
         })
         .then((res) => {
-          if (res.status== 200) {
+          if (res.status=== 200) {
             console.log(res);
             this.tableData = res.data.data;
             this.total = res.data.total;

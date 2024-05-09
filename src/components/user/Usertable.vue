@@ -463,12 +463,11 @@ export default {
       this.sex = "";
     },
     selectCurrentChange(val) {
-                // this.currentRow = val;
                 this.$emit("doSelectUser",val)
             },
     loadPost() {
       this.$axios
-        .post(this.$httpUrl + "/user/listPageC1", {
+        .post(this.$httpUrl + "/user/Pagequery", {
           pageSize: this.pageSize,
           pageNum: this.pageNum,
           param: {

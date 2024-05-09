@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top: 10px; margin-left: 0px">
+    <div style="margin-top: 10px; ">
       <form
         class="form"
         style="
@@ -117,6 +117,7 @@
         width: 100%;
         border-radius: 20px;
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        margin-bottom:20px;
       "
       :data="tableData"
       :header-cell-style="{ background: '#fff', color: '#555555' }"
@@ -173,7 +174,7 @@
 
     <el-pagination
       small
-      style="margin-top: 10px; margin-left: 15px"
+      style="margin-top: 10px; margin-left: 6px;margin-bottom:250px;"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
@@ -185,10 +186,11 @@
     </el-pagination>
 
     <el-dialog
-      title="新增借条"
+      title="新 增 借 条"
       :visible.sync="dialogVisible"
       width="33%"
       center
+      style="transform:translateX(4px)"
     >
       <el-dialog
         width="75%"
@@ -238,14 +240,14 @@
       <span slot="footer" class="dialog-footer">
         <el-button
           @click="dialogVisible = false"
-          style="transform: translate(15px, -40px); margin-right: 10px"
+          style="transform: translate(15px, -25px); margin-right: 10px"
           size="medium"
           >取 消</el-button
         >
         <el-button
           type="primary"
           @click="save"
-          style="transform: translate(15px, -40px)"
+          style="transform: translate(15px, -25px)"
           size="medium"
           >提 交</el-button
         >
@@ -341,7 +343,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.tableData = res.data;
             this.total = res.total;
           } else {
@@ -371,7 +373,7 @@ export default {
         .get(this.$httpUrl + "/loanregister/del?id=" + id)
         .then((res) => {
           console.log(res);
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.$message({
               message: "删除成功！",
               type: "success",
@@ -412,7 +414,7 @@ export default {
           console.log(this.form);
           console.log(this.tableData);
           console.log(res);
-          if (res.data.code == 200) {
+          if (res.data.code === 200) {
             this.$message({
               message: "还库成功 ！商品库存已更新",
               type: "success",
@@ -439,14 +441,14 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "申请成功！",
               type: "success",
             });
             this.dialogVisible = false;
             this.loadPost();
-          } else if (res.msg == "此商品不存在") {
+          } else if (res.msg === "此商品不存在") {
             this.$message({
               message: "此商品不存在！",
               type: "error",
@@ -472,7 +474,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "修改成功！",
               type: "success",
@@ -509,7 +511,7 @@ export default {
     },
     loadUser() {
       this.$axios.get(this.$httpUrl + "/user/list").then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           this.UserData = res.data;
         } else {
           alert("获取数据失败");
@@ -526,8 +528,7 @@ export default {
           },
         })
         .then((res) => {
-          if (res.status == 200) {
-            // console.log(res);
+          if (res.status === 200) {
             this.tableData = res.data.data;
             this.total = res.data.total;
           } else {

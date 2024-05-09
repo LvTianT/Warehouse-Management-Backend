@@ -673,7 +673,6 @@ export default {
     doInGoods() {
       this.$axios
         .post(this.$httpUrl + "/usertransactions/savein", this.form1)
-        // .then((res) => res.data)
         .then((res) => {
           console.log(res);
           if (res.status == 200) {

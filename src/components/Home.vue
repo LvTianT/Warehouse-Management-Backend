@@ -42,8 +42,8 @@
             <el-tag
               :type="user.sex === '1' ? 'primary' : 'danger'"
               disable-transitions
-              ><i :class="user.sex == 1 ? 'el-icon-male' : 'el-icon-female'"></i
-              >{{ user.sex == 1 ? "男" : "女" }}</el-tag
+              ><i :class="user.sex === 1 ? 'el-icon-male' : 'el-icon-female'"></i
+              >{{ user.sex === 1 ? "男" : "女" }}</el-tag
             >
           </el-descriptions-item>
           <el-descriptions-item>
@@ -52,9 +52,9 @@
               角色
             </template>
             <el-tag type="success" disable-transitions>{{
-              user.roleId == 0
+              user.roleId === 0
                 ? "高级管理员"
-                : user.roleId == 1
+                : user.roleId === 1
                 ? "管理员"
                 : "用户"
             }}</el-tag>
@@ -110,15 +110,6 @@ export default {
 
 <style scoped>
 
-.el-main {
-  overflow: hidden;
-  padding: 9px;
-}
-.el-descriptions {
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-}
 .home {
   /* border-radius: 50px;
 background: #f7f7f7;
