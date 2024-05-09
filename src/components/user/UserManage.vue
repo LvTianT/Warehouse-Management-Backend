@@ -278,8 +278,8 @@ export default {
             callback(new Error("账号已经存在"));
           }
         });
-    };
-    let checkPhone = (rule, value, callback) => {};
+      };
+    // let checkPhone = (rule, value, callback) => {};
     return {
       tableData: [],
       pageSize: 8,
@@ -320,7 +320,7 @@ export default {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
         password: [
           { required: false, message: "请输入密码", trigger: "blur" },
-          { min: 3, max: 8, message: "长度在 3 到 8 个字符", trigger: "blur" },
+          { min: 3,message: "长度大于3", trigger: "blur" },
         ],
 
         age: [

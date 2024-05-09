@@ -1,18 +1,18 @@
 <template>
-  <div class="hea">
+  <div class="hea" >
     <div
       style="
         font-weight: normal;
         text-align: center;
         height: 100%;
-        padding: 10px;
+        margin-bottom: 500px;
+        padding:20px;
         margin-top: 10px;
         margin-left: 10px;
       "
       class="home"
     >
       <el-main style="height: 100%;">
-        <!-- <h1 style="font-size: 16px;font-weight: normal;transform:translate(-37px, 20px);">{{'欢迎你！'+user.name}}</h1> -->
         <el-descriptions
           title="个人信息"
           :column="2"
@@ -63,21 +63,22 @@
         <DateUtils></DateUtils>
       </el-main>
     </div>
-    <div
+
+  <div
       class="card"
       v-if="display"
-      style="margin-left: 900px; margin-top: 100px"
-    >
-      <div class="header"></div>
-      <div class="info">
-        <p class="title">Welcome !</p>
-        <p>Check your information if it has been updated.</p>
-      </div>
-      <div class="footer">
-        <p class="tag" style="font-size: 15px; margin-left: 15px">confirm ?</p>
-        <button type="button" class="action" @click="confirm">OK</button>
-      </div>
+      style="margin-left: 900px; margin-top: 100px;transform:translate(-20px,-370px)"
+  >
+    <div class="header"></div>
+    <div class="info">
+      <p class="title">Welcome !</p>
+      <p>Check your information if it has been updated.</p>
     </div>
+    <div class="footer">
+      <p class="tag" style="font-size: 15px; margin-left: 15px">confirm ?</p>
+      <button type="button" class="action" @click="confirm">OK</button>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -112,7 +113,6 @@ export default {
 .el-main {
   overflow: hidden;
   padding: 9px;
-  background-color: none;
 }
 .el-descriptions {
   width: 90%;
@@ -206,6 +206,9 @@ box-shadow:  20px 20px 17px #dff9f2,
   padding: 0.75rem 1.5rem;
   background-color: rgb(48, 158, 248);
   border-radius: 0.5rem;
+}
+.action:hover{
+  background: #a9cbee;
 }
 .cell {
   border: 1px solid #3b3b3b;
