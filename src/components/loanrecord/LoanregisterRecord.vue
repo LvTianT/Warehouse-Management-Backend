@@ -520,7 +520,7 @@ export default {
     },
     loadPost() {
       this.$axios
-        .post(this.$httpUrl + "/loanregister/listPageC1", {
+        .post(this.$httpUrl + "/loanregister/loanregisterlist", {
           pageSize: this.pageSize,
           pageNum: this.pageNum,
           param: {

@@ -113,7 +113,7 @@
       :header-cell-style="{ background: '#fff', color: '#555555' }"
       border
     >
-        <el-table-column prop="inventorycheckid" label="盘库编号" width="150"> </el-table-column>
+        <el-table-column prop="inventorycheckid" label="记录序号" width="150"> </el-table-column>
       <el-table-column prop="productid" label="产品编号" width="150"> </el-table-column>
       <el-table-column prop="checkedquantity" label="当天库存" width="150"> </el-table-column>
       <el-table-column prop="checkdate" label="盘库时间" width="250"> </el-table-column>
@@ -429,7 +429,7 @@ export default {
     },
     loadPost() {
       this.$axios
-        .post(this.$httpUrl + "/inventorycheck/listPageC1",{
+        .post(this.$httpUrl + "/inventorycheck/Checklist",{
           pageSize: this.pageSize,
           pageNum: this.pageNum,
           param: {

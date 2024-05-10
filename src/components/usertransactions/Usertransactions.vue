@@ -117,7 +117,7 @@
 
 <script>
 export default {
-  productName: "Usertransactions",
+  name: "Usertransactions",
   data() {
     return {
       user: JSON.parse(sessionStorage.getItem("CurUser")),
@@ -227,7 +227,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.timecheckTable = res.data;
             this.total = res.total;
             console.log(this.timecheckTable);
@@ -528,7 +528,7 @@ export default {
 
 .button2:hover {
   color: #ffffff;
-  border: 1px solproductId #e2f5f4;
+  border: 1px solid #e2f5f4;
 }
 
 .button2:hover:before {

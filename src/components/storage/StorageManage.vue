@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      style="margin-top: 5px; margin-left: 265px; display: inline-block"
+      style="margin-top: 5px; margin-left:-3px;display: inline-block"
       class="input"
     >
-      <span style="margin-right: 15px; margin-left: 26px; font-size: 15px"
+      <span style="margin-right: 15px; margin-left: 22px; font-size: 15px"
         >库名:</span
       >
       <form class="form" style="display: inline-block; margin-right: 60px">
@@ -75,7 +75,7 @@
       <el-button
        icon="el-icon-search"
         size="medium"
-        style="margin-top: 10px; display: inline-block; margin-left: -15px"
+        style="margin-top: 10px; display: inline-block; margin-left: -40px"
         @click="loadPost"
         round
         class="button2"
@@ -83,35 +83,34 @@
         plain
         >查询</el-button
       >
-    </div>
-    <div style="margin-left: 10px; margin-bottom: 10px; display: inline-block">
       <el-button
-       icon="el-icon-plus"
-        size="medium"
-        type="primary"
-        class="button2 button3"
-        style="display: inline-block; margin-left: 12px; margin-right: 12px"
-        @click="add"
-        round
-        >新增</el-button
+          icon="el-icon-plus"
+          size="medium"
+          type="primary"
+          class="button2 button3"
+          style="margin-left: 580px; margin-bottom: 10px; margin-right:3px;display: inline-block;"
+          @click="add"
+          round
+      >新增</el-button
       >
 
       <el-button icon="el-icon-refresh-right" size="medium" class="button2 button4" @click="resetParam" round
-        >重置</el-button
+      >重置</el-button
       >
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- </div> -->
     </div>
+
+<!--    <div style="margin-left: 600px; margin-bottom: 10px; display: inline-block">-->
+<!--     -->
+<!--    </div>-->
 
     <div style="position: relative; margin: 0 auto">
       <el-table
         style="
           clear: both;
           text-align: center;
-          margin-left: 290px;
-          width: 53%;
+          width:98%;
           justify-content: center;
+          margin-left:15px;
           border-radius: 20px;
           box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
           margin-top: 15px;
@@ -123,13 +122,13 @@
         <el-table-column
           prop="warehouseId"
           label="仓库编号"
-          width="130"
+          width="150"
           style="text-align: center"
         >
         </el-table-column>
         <el-table-column prop="name" label="仓库名" width="150">
         </el-table-column>
-        <el-table-column prop="remark" label="备注" width="150">
+        <el-table-column prop="remark" label="备注" width="450">
         </el-table-column>
         <el-table-column prop="operate" label="操作" class="cell">
           <template slot-scope="scope">
@@ -198,14 +197,14 @@
       <span slot="footer" class="dialog-footer">
         <el-button
           @click="dialogVisible = false"
-          style="transform: translate(13px, -30px); margin-right: 15px"
+          style="transform: translate(8px, -30px);margin-right: 15px;"
           size="medium"
           >取 消</el-button
         >
         <el-button
           type="primary"
           @click="save"
-          style="transform: translate(13px, -30px)"
+          style="transform: translateY(-30px)"
           size="medium"
           >提 交</el-button
         >
@@ -238,7 +237,7 @@
       <span slot="footer" class="dialog-footer">
         <el-button
           @click="dialogVisible2 = false"
-          style="transform: translate(13px, -30px); margin-right: 15px"
+          style="transform: translate(12px, -30px); margin-right: 10px"
           size="medium"
           >取 消</el-button
         >
