@@ -272,14 +272,13 @@ export default {
         .get(this.$httpUrl + "/user/findByNo?no=" + this.form.no)
         .then((res) => res.data)
         .then((res) => {
-          if (res.code != 200) {
+          if (res.code !== 200) {
             callback();
           } else {
             callback(new Error("账号已经存在"));
           }
         });
       };
-    // let checkPhone = (rule, value, callback) => {};
     return {
       tableData: [],
       pageSize: 8,
@@ -390,7 +389,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "添加成功！",
               type: "success",
@@ -418,7 +417,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "修改成功！",
               type: "success",
@@ -483,7 +482,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.tableData = res.data;
             this.total = res.total;
           } else {

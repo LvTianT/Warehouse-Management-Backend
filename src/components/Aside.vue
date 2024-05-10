@@ -71,8 +71,8 @@ export default {
 
 .el-menu-item:hover {
   color: #fff;
-  border-right: 1px solid #91bade;
-   
+  //border-right: 1px solid #91bade;
+
 }
 .el-menu-item i {
   margin-left: -8px;
@@ -81,7 +81,7 @@ element.style {
   margin-left: 5px;
 }
 .m:hover {
-  border-right: 1px solid #7ebfff;
+  border-left: 2px solid #7ebfff;
 }
 
 </style>

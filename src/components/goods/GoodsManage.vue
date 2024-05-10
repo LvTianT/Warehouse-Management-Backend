@@ -471,8 +471,8 @@
           </el-col>
         </el-form-item>
       </el-form>
-      <span slot="footer" class="dialog-footer">
-        <div style="transform: translate(0px, -50px)">
+      <div slot="footer" class="dialog-footer">
+        <span style="transform: translate(0px, -50px)">
           <el-button
             @click="inDialogVisible = false"
             size="small"
@@ -482,8 +482,8 @@
           <el-button type="primary" @click="doInGoods" size="small"
             >确 认</el-button
           >
-        </div>
-      </span>
+        </span>
+      </div>
     </el-dialog>
     <el-dialog
       title="出 库"
@@ -675,7 +675,7 @@ export default {
         .post(this.$httpUrl + "/usertransactions/savein", this.form1)
         .then((res) => {
           console.log(res);
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.$message({
               message: "入库成功！",
               type: "success",
@@ -727,12 +727,12 @@ export default {
           }
         })
         .then((res) => {
-          if (res.data.code==400||res.data.msg==="商品库存不足,无法出库") {
+          if (res.data.code===400||res.data.msg==="商品库存不足,无法出库") {
             this.$message({
               message: "商品库存不足,无法出库！",
               type: "error",
             });
-          } else if (res.status == 200) {
+          } else if (res.status === 200) {
             this.$message({
               message: "出库成功！",
               type: "success",
@@ -768,7 +768,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.timecheckTable = res.data;
             this.total = res.total;
           } else {
@@ -787,7 +787,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.timecheckTable = res.data;
             this.total = res.total;
           } else {
@@ -854,7 +854,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "添加成功！",
               type: "success",
@@ -876,7 +876,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message({
               message: "修改成功！",
               type: "success",
@@ -922,37 +922,37 @@ export default {
     },
     formatWarehouse(row) {
       let temp = this.storageData.find((item) => {
-        return item.warehouseId == row.warehouseId;
+        return item.warehouseId === row.warehouseId;
       });
       return temp ? temp.name : "";
     },
     formatInventory(row) {
       let temp = this.storageData.find((item) => {
-        return item.warehouseId == row.warehouseID;
+        return item.warehouseId === row.warehouseID;
       });
       return temp ? temp.name : "";
     },
     formatProductstype(row) {
       let temp = this.goodstypeData.find((item) => {
-        return item.id == row.productsType;
+        return item.id === row.productsType;
       });
       return temp ? temp.name : "";
     },
     formatProductstypeId(row) {
       let temp = this.goodstypeData.find((item) => {
-        return item.name == row.productsType;
+        return item.name === row.productsType;
       });
       return temp ? temp.id : "";
     },
     formatProductstypeName(id) {
       let temp = this.goodstypeData.find((item) => {
-        return item.id == id;
+        return item.id === id;
       });
       return temp ? temp.name : "";
     },
     formatProductsName(row) {
       let temp = this.tableData.find((item) => {
-        return item.productId == row.productId;
+        return item.productId === row.productId;
       });
       return temp ? temp.productName : "";
     },
@@ -985,7 +985,7 @@ export default {
         })
         .then((res) => res.data)
         .then((res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.tableData = res.data;
             this.total = res.total;
           } else {
@@ -999,7 +999,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.storageData = res.data;
           } else {
             alert("获取数据失败");
@@ -1011,8 +1011,7 @@ export default {
         .get(this.$httpUrl + "/goodstype/list")
         .then((res) => res.data)
         .then((res) => {
-          // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.goodstypeData = res.data;
           } else {
             alert("获取数据失败");
@@ -1022,10 +1021,8 @@ export default {
     loadInventory() {
       this.$axios
         .get(this.$httpUrl + "/inventory/list")
-        // .then((res)=>console.log(res))
         .then((res) => {
-          //   console.log(res);
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.timecheckTable = res.data;
           } else {
             alert("获取数据失败");
@@ -1035,10 +1032,8 @@ export default {
     loadAlert() {
       this.$axios
         .get(this.$httpUrl + "/inventoryalerts/list")
-        // .then((res)=>console.log(res))
         .then((res) => {
-          console.log(res);
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.alertTable = res.data;
           } else {
             alert("获取数据失败");
