@@ -95,20 +95,20 @@
       border
       @current-change="selectCurrentChange"
     >
-      <el-table-column prop="productId" label="商品编号" width="160">
+      <el-table-column prop="productId" label="商品编号" width="100">
       </el-table-column>
-      <el-table-column prop="productName" label="名称" width="200">
+      <el-table-column prop="productName" label="名称" width="180">
       </el-table-column>
       <el-table-column prop="purchasePrice" label="进价"> </el-table-column>
       <el-table-column prop="salesPrice" label="售价"> </el-table-column>
-      <el-table-column prop="supplier" label="供应商"> </el-table-column>
+      <el-table-column prop="supplier" label="供应商" width="130"> </el-table-column>
       <el-table-column
         prop="productsType"
         label="分类"
         :formatter="formatProductstype"
       >
       </el-table-column>
-      <el-table-column prop="productDescription" label="商品描述">
+      <el-table-column prop="productDescription" label="商品描述" width="200">
       </el-table-column>
       <el-table-column
         prop="warehouseId"
@@ -143,10 +143,23 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+        style="margin-left: 10px; margin-top: 25px;margin-bottom:20px;"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pageNum"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+    >
+    </el-pagination>
+
     <div class="block" style="margin-top: 20px; float: left">
+      <span style="margin-left:15px;font-size: 14px;">请选择要查询的时间：</span>
       <span
         class="demonstration"
-        style="font-size: 14px; margin-right: 10px; margin-left: 10px"
+        style="font-size: 14px; margin-right: 10px; margin-left: 417px"
         >入库时间:</span
       >
       <el-date-picker
@@ -192,13 +205,18 @@
     >
       <el-table-column prop="productId" label="商品编号" width="160">
       </el-table-column>
-      <el-table-column
-        prop="productId"
-        label="名称"
-        width="200"
-        :formatter="formatProductsName"
-      >
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="productId"-->
+<!--        label="名称"-->
+<!--        width="200"-->
+<!--        :formatter="formatProductsName"-->
+<!--      >-->
+<!--      </el-table-column>-->
+<!--      <el-table-column label="产品名称">-->
+<!--        <template slot-scope="scope">-->
+<!--          {{ getProductName(scope.row.productId) }}-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="warehouseID"
         label="仓库"
@@ -212,17 +230,16 @@
       <el-table-column prop="outTime" label="最后出库时间"> </el-table-column>
     </el-table>
     <el-pagination
-      style="margin-left: 10px; margin-top: 25px"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="pageNum"
-      :page-sizes="[5, 10, 15, 20]"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
+        style="margin-left: 10px; margin-top: 25px;margin-bottom:20px;"
+        @size-change="handleSizeChange2"
+        @current-change="handleCurrentChange2"
+        :current-page="pageNum2"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize2"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total2"
     >
     </el-pagination>
-
     <el-dialog
       title="新增商品"
       :visible.sync="centerDialogVisible"
@@ -437,7 +454,7 @@
         label-width="80px"
         style="transform: translate(-4px, -20px)"
       >
-        <el-form-item label="物品名" prop="productsName">
+        <el-form-item label="物品名" prop="productsName"  style="transform: translateY(5px)">
           <el-col :span="22">
             <el-input
               v-model="form1.productsName"
@@ -446,7 +463,7 @@
             ></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="申请人" prop="instaffname">
+        <el-form-item label="申请人" prop="instaffname"  style="transform: translateY(5px)">
           <el-col :span="22">
             <el-input
               v-model="form1.instaffname"
@@ -456,12 +473,12 @@
             ></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="数量" prop="inquantity">
+        <el-form-item label="数量" prop="inquantity"  style="transform: translateY(5px)">
           <el-col :span="22">
             <el-input v-model="form1.inquantity" size="small"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
+        <el-form-item label="备注" prop="remark" style="transform: translateY(10px)">
           <el-col :span="22">
             <el-input
               type="textarea"
@@ -472,7 +489,7 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <div style="transform: translate(0px, -50px)">
+        <div style="transform: translate(0px, -32px)">
           <el-button
             @click="inDialogVisible = false"
             size="small"
@@ -529,7 +546,7 @@
           <el-input v-model="form1.outquantity" size="small"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="备注" prop="remark">
+        <el-form-item label="备注" prop="remark" style="transform: translateY(5px)">
           <el-col :span="22">
             <el-input
               type="textarea"
@@ -569,9 +586,12 @@ export default {
       tableData: [],
       timecheckTable: [],
       alertTable: [],
-      pageSize: 8,
+      pageSize: 5,
       pageNum: 1,
       total: 0,
+      pageSize2: 5,
+      pageNum2: 1,
+      total2: 0,
       productName: "",
       warehouseId: "",
       productsType: "",
@@ -922,50 +942,74 @@ export default {
     },
     formatWarehouse(row) {
       let temp = this.storageData.find((item) => {
-        return item.warehouseId == row.warehouseId;
+        return item.warehouseId === row.warehouseId;
       });
       return temp ? temp.name : "";
     },
     formatInventory(row) {
       let temp = this.storageData.find((item) => {
-        return item.warehouseId == row.warehouseID;
+        return item.warehouseId === row.warehouseID;
       });
       return temp ? temp.name : "";
     },
     formatProductstype(row) {
       let temp = this.goodstypeData.find((item) => {
-        return item.id == row.productsType;
+        return item.id === row.productsType;
       });
       return temp ? temp.name : "";
     },
     formatProductstypeId(row) {
       let temp = this.goodstypeData.find((item) => {
-        return item.name == row.productsType;
+        return item.name === row.productsType;
       });
       return temp ? temp.id : "";
     },
     formatProductstypeName(id) {
       let temp = this.goodstypeData.find((item) => {
-        return item.id == id;
+        return item.id === id;
       });
       return temp ? temp.name : "";
     },
     formatProductsName(row) {
-      let temp = this.tableData.find((item) => {
-        return item.productId == row.productId;
-      });
-      return temp ? temp.productName : "";
+  {
+        const temp = this.timecheckTable.find((item) => {
+          return item.productId === row.productId;
+        });
+        return temp ? temp.productName : "";
+      }
     },
+
+    getProductName(productId) {
+      // 使用上面定义的函数来获取产品名称
+      return getProductNameById(productId, this.tableData);
+    },
+  getProductNameById(productId, tableData) {
+  const product = tableData.find(item => item.productId === productId);
+  return product ? product.productName : '未知产品';
+},
+
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
       this.pageNum = 1;
       this.pageSize = val;
       this.loadPost();
     },
+
+    handleSizeChange2(val) {
+      console.log(`每页 ${val} 条`);
+      this.pageSize2=val;
+      this.pageNum2=1;
+      this.loadInventory();
+    },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.pageNum = val;
       this.loadPost();
+    },
+    handleCurrentChange2(val) {
+      console.log(`当前页: ${val}`);
+      this.pageNum2 = val;
+      this.loadInventory();
     },
     resetParam() {
       this.productName = "";
@@ -985,8 +1029,9 @@ export default {
         })
         .then((res) => res.data)
         .then((res) => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.tableData = res.data;
+            console.log(this.tableData);
             this.total = res.total;
           } else {
             alert("获取数据失败");
@@ -999,7 +1044,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.storageData = res.data;
           } else {
             alert("获取数据失败");
@@ -1012,7 +1057,7 @@ export default {
         .then((res) => res.data)
         .then((res) => {
           // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.goodstypeData = res.data;
           } else {
             alert("获取数据失败");
@@ -1021,12 +1066,17 @@ export default {
     },
     loadInventory() {
       this.$axios
-        .get(this.$httpUrl + "/inventory/list")
+         .post(this.$httpUrl + "/inventory/inventlist",{
+           pageSize:this.pageSize2,
+           pageNum:this.pageNum2,
+         })
         // .then((res)=>console.log(res))
         .then((res) => {
-          //   console.log(res);
-          if (res.status == 200) {
-            this.timecheckTable = res.data;
+            console.log(res);
+          if (res.status === 200) {
+            this.timecheckTable = res.data.data;
+            console.log(this.timecheckTable)
+            this.total2 = res.data.total;
           } else {
             alert("获取数据失败");
           }
@@ -1038,7 +1088,7 @@ export default {
         // .then((res)=>console.log(res))
         .then((res) => {
           console.log(res);
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.alertTable = res.data;
           } else {
             alert("获取数据失败");

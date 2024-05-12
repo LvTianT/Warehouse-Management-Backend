@@ -39,10 +39,10 @@
            <el-table-column prop="productid" label="商品名称" width="130"  :formatter="formatProductsName">
       </el-table-column>
       <el-table-column prop="inquantity" label="入库数量"  width="120"> </el-table-column>
-      <el-table-column prop="intime" label="最后入库时间" width="180"> </el-table-column>
+      <el-table-column prop="intime" label="入库时间" width="180"> </el-table-column>
       <el-table-column prop="instaff" label="入库人" width="130" :formatter="formatInName"> </el-table-column>
       <el-table-column prop="outquantity" label="出库数量"> </el-table-column>
-      <el-table-column prop="outtime" label="最后出库时间"  width="180"> </el-table-column>
+      <el-table-column prop="outtime" label="出库时间"  width="180"> </el-table-column>
       <el-table-column prop="outstaff" label="出库人" width="130"  :formatter="formatOutName"> </el-table-column>
       <el-table-column prop="remark" label="备注"> </el-table-column>
     </el-table>
@@ -94,10 +94,10 @@
       <el-table-column prop="productid" label="商品编号" width="160">
       </el-table-column>
       <el-table-column prop="inquantity" label="入库数量"  width="130"> </el-table-column>
-      <el-table-column prop="intime" label="最后入库时间" width="180"> </el-table-column>
+      <el-table-column prop="intime" label="入库时间" width="180"> </el-table-column>
       <el-table-column prop="instaff" label="入库人" :formatter="formatInName"> </el-table-column>
       <el-table-column prop="outquantity" label="出库数量"> </el-table-column>
-      <el-table-column prop="outtime" label="最后出库时间"  width="180"> </el-table-column>
+      <el-table-column prop="outtime" label="出库时间"  width="180"> </el-table-column>
       <el-table-column prop="outstaff" label="出库人" :formatter="formatOutName"> </el-table-column>
       <el-table-column prop="remark" label="备注"> </el-table-column>
     </el-table>
