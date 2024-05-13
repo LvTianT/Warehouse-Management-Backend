@@ -1,18 +1,18 @@
 <template>
   <div class="loginBody">
   
-    <div class="loginDiv">
-        <div style="text-align:center;font-size:23px;transform:translate(0px,-70px);font-weight:300;"class="txt">仓 库 管 理 系 统 后 台</div>
+    <div class="loginDiv" >
+        <div style="text-align:center;font-size:23px;transform:translate(10px,-70px);font-weight:300;" class="txt">仓 库 管 理 系 统 后 台</div>
         <div style="background-color: #000;">
          <div class="login-content" style="opacity: 0.8">
-        <div class="login-title" style="transform:translate(-2px,-10px);">登 录</div>
+        <div class="login-title" style="transform:translate(0px,-10px);">登 录</div>
         <el-form
           :model="loginForm"
           label-width="100px"
           :rules="rules"
           ref="loginForm"
         >
-          <el-form-item label="账 号" prop="no" style="transform:translate(-10px,-10px)">
+          <el-form-item label="账 号" prop="no" style="transform:translate(-20px,-12px)">
             <el-input
             placeholder="请输入账号"
               style="width: 250px"
@@ -22,7 +22,7 @@
               size="small"
             ></el-input>
           </el-form-item>
-          <el-form-item label="密 码" prop="password" style="transform:translate(-10px,-10px)">
+          <el-form-item label="密 码" prop="password" style="transform:translate(-20px,-14px)">
             <el-input
             placeholder="请输入密码"
               style="width: 250px"
@@ -36,13 +36,13 @@
           </el-form-item>
           <el-form-item>
             <el-button
-            style="transform: translate(-10px,-12px);height:39px;width: 250px;"
+            style="transform: translate(-20px,-12px);height:39px;width: 250px;"
               type="primary"
               @click="confirm"
               :disabled="confirm_disabled"
               >确 定</el-button
             >
-            <router-link to="/Register" class="register" style="transform: translateX(13px)">没有账号？去注册</router-link>
+            <router-link to="/Register" class="register" style="transform: translate(5px,2px)">没有账号？去注册</router-link>
           </el-form-item>
         </el-form>
       </div>

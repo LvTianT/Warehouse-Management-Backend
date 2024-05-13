@@ -442,14 +442,13 @@
       >
         <Usertable @doSelectUser="doSelectUser"></Usertable>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="innerVisible = false">取 消</el-button>
-          <el-button type="primary" @click="confirmUser">确 定</el-button>
+          <el-button @click="innerVisible = false" style="transform: translate(-24px,-72px)">取 消</el-button>
+          <el-button type="primary" @click="confirmUser" style="transform: translate(-22px,-72px)">确 定</el-button>
         </span>
       </el-dialog>
 
       <el-form
         ref="form1"
-        :rules="rules1"
         :model="form1"
         label-width="80px"
         style="transform: translate(-4px, -20px)"
@@ -516,12 +515,12 @@
       >
         <Usertable @doSelectUser="doSelectUser"></Usertable>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="innerVisible = false">取 消</el-button>
-          <el-button type="primary" @click="confirmUser2">确 定</el-button>
+          <el-button @click="innerVisible = false" style="transform: translate(-22px,-72px)">取 消</el-button>
+          <el-button type="primary" @click="confirmUser2"  style="transform: translate(-20px,-72px)">确 定</el-button>
         </span>
       </el-dialog>
 
-      <el-form ref="form1" :rules="rules1" :model="form1" label-width="80px">
+      <el-form ref="form1" :model="form1" label-width="80px">
         <el-form-item label="物品名" prop="productsName">
           <el-col :span="22">
             <el-input
@@ -695,7 +694,13 @@ export default {
         .post(this.$httpUrl + "/usertransactions/savein", this.form1)
         .then((res) => {
           console.log(res);
-          if (res.status == 200) {
+          if(res.data.msg==="请填写表格！"){
+            this.$message({
+              message: "请填写表格！",
+              type: "error",
+            });
+          }
+          else if (res.data.code === 200) {
             this.$message({
               message: "入库成功！",
               type: "success",
@@ -734,20 +739,23 @@ export default {
           param: {
             productid: this.form1.productid,
             productsName: this.form1.productsName,
-            inquantity: this.form1.inquantity,
             outquantity:this.form1.outquantity,
-            instaff: this.form1.instaff,
             outstaff: this.form1.outstaff,
             remark: this.form1.remark,
             action: this.form1.action,
-            intime: this.form1.intime,
             outtime: this.form1.outtime,
-            instaffname: this.form1.instaffname,
             outstaffname: this.form1.outstaffname,
           }
         })
         .then((res) => {
-          if (res.data.code==400||res.data.msg==="商品库存不足,无法出库") {
+          console.log(res)
+          if(res.data.msg==="请填写表格！"){
+            this.$message({
+              message: "请填写表格！",
+              type: "error",
+            });
+          }
+          else if (res.data.msg==="商品库存不足,无法出库") {
             this.$message({
               message: "商品库存不足,无法出库！",
               type: "error",
@@ -757,7 +765,6 @@ export default {
               message: "出库成功！",
               type: "success",
             });
-
             this.inDialogVisible2 = false;
             this.loadPost();
             this.loadInventory();

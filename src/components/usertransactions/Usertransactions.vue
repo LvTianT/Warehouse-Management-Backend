@@ -36,7 +36,7 @@
     >
       <el-table-column prop="productid" label="商品编号" width="130">
       </el-table-column>
-           <el-table-column prop="productid" label="商品名称" width="130"  :formatter="formatProductsName">
+           <el-table-column prop="productid" label="商品名称" width="160"  :formatter="formatProductsName">
       </el-table-column>
       <el-table-column prop="inquantity" label="入库数量"  width="120"> </el-table-column>
       <el-table-column prop="intime" label="入库时间" width="180"> </el-table-column>

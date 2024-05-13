@@ -60,14 +60,14 @@
             }}</el-tag>
           </el-descriptions-item>
         </el-descriptions>
-        <DateUtils></DateUtils>
+        <DateUtils style="transform: translateY(6px)"></DateUtils>
       </el-main>
     </div>
 
   <div
       class="card"
       v-if="display"
-      style="margin-left: 900px; margin-top: 100px;transform:translate(-20px,-370px)"
+      style="margin-left: 900px; margin-top: 100px;transform:translate(-20px,-430px)"
   >
     <div class="header"></div>
     <div class="info">
@@ -79,6 +79,7 @@
       <button type="button" class="action" @click="confirm">OK</button>
     </div>
   </div>
+
   </div>
 </template>
 
@@ -86,26 +87,26 @@
 import DateUtils from "./DateUtils";
 export default {
   name: "Home",
-  components: { DateUtils },
+  components: {DateUtils},
   data() {
+
     return {
-      display: true,
-      user: {},
-    };
+      user:{}
+    }
   },
-  computed: {},
-  methods: {
-    init() {
-      this.user = JSON.parse(sessionStorage.getItem("CurUser"));
-    },
-    confirm() {
-      this.display = !this.display;
-    },
+  computed:{
+
   },
-  created() {
-    this.init();
+  methods:{
+    init(){
+      this.user = JSON.parse(sessionStorage.getItem('CurUser'))
+    }
   },
-};
+  created(){
+    this.init()
+  }
+}
+
 </script>
 
 <style scoped>
