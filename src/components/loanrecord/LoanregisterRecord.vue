@@ -267,7 +267,7 @@ export default {
       tableData: [],
       UserData: [],
       timecheckTable: [],
-      pageSize: 10,
+      pageSize: 100000,
       pageNum: 1,
       total: 0,
       borrower: "",
@@ -283,7 +283,7 @@ export default {
         operate: "",
       },
       rules: {
-        borrower: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+
         productid: [
           { required: true, message: "请输入产品编号", trigger: "blur" },
         ],
@@ -400,20 +400,20 @@ export default {
     returnpro(row) {
       this.$axios
         .post(this.$httpUrl + "/loanregister/returnpro", {
-          pageSize: this.pageSize,
+          pageSize: 100000,
           pageNum: this.pageNum,
           param: {
             loanid: row.loanid,
             productid: row.productid,
             quantity: row.quantity,
             borrower: row.borrower,
-            operate: row.operate,
+           operate: row.operate,
           },
         })
         .then((res) => {
           console.log(this.form);
           console.log(this.tableData);
-          console.log(res);
+          console.log(res.data);
           if (res.data.code === 200) {
             this.$message({
               message: "还库成功 ！商品库存已更新",

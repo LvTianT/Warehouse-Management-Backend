@@ -18,7 +18,7 @@
           :column="2"
           size="40"
           border
-          style="font-size: 10px; border: none"
+          style="font-size: 12px; border: none"
         >
           <el-descriptions-item class="item">
             <template slot="label" class="cell">
@@ -67,7 +67,7 @@
   <div
       class="card"
       v-if="display"
-      style="margin-left: 900px; margin-top: 100px;transform:translate(-20px,-430px)"
+      style="margin-left: 900px; margin-top: 100px;transform:translate(-20px,-450px)"
   >
     <div class="header"></div>
     <div class="info">
@@ -91,7 +91,8 @@ export default {
   data() {
 
     return {
-      user:{}
+      user:{},
+      display:true
     }
   },
   computed:{
@@ -99,7 +100,10 @@ export default {
   },
   methods:{
     init(){
-      this.user = JSON.parse(sessionStorage.getItem('CurUser'))
+      this.user = JSON.parse(sessionStorage.getItem('CurUser'));
+    },
+    confirm(){
+      this.display=false
     }
   },
   created(){

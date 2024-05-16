@@ -1,6 +1,6 @@
 <template>
   <div class="loginBody">
-    <div class="loginDiv"  style="transform:translateY(-20px)">
+    <div class="loginDiv" >
         <div style="background-color: #000;">
          <div class="login-content" style="opacity: 0.8">
         <div class="login-title">注 册</div>
@@ -135,23 +135,21 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background-image: linear-gradient(45deg, rgba(106, 255, 0, 0.09), rgba(116, 133, 255, 0.43));  */
-   background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg');
-  /* background-image: -webkit-linear-gradient(90deg,
-    rgb(254, 205, 205),
-    rgb(209, 240, 250)) */
-    /* background-image: linear-gradient(180deg, rgba(255, 0, 221, 0.24), rgba(0, 217, 255, 0.63)); */
-    /* background-image:linear-gradient(45deg, rgb(235 167 244 / 92%), rgb(168 255 242)); */
+  //background-image: linear-gradient(45deg, rgba(106, 255, 0, 0.09), rgba(47, 60, 154, 0.43));
+  /* background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg'); */
+  /* background-image: -webkit-linear-gradient(90deg, rgb(254, 205, 205),rgb(209, 240, 250)) */
+  /* background-image: linear-gradient(180deg, rgba(255, 0, 221, 0.24), rgba(0, 217, 255, 0.63)); */
+  /* background-image:linear-gradient(45deg, rgb(235 167 244 / 92%), rgb(168 255 242)); */
 
-  /* background-image: linear-gradient(90deg, rgba(0, 255, 208, 0.4), rgba(255, 132, 0, 0.09));  */
-  /* background-image: linear-gradient(45deg, rgb(235, 138, 249), rgb(122 255 235)); */
+ /* background-image: linear-gradient(90deg, rgba(0, 255, 208, 0.4), rgba(255, 132, 0, 0.09));  */
+ background-image: linear-gradient(45deg, rgb(235, 138, 249), rgb(122 255 235));
 }
 .loginDiv {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -200px;
-  margin-left: -250px;
+  margin-top: -240px;
+  margin-left: -240px;
   width: 450px;
   height: 450px;
   border-radius: 0px;

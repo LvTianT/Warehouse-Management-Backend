@@ -1,5 +1,5 @@
 <template >
-    <div style="padding-top: 12px;font-size: 10px;">
+    <div style="padding-top: 12px;font-size: 12px;">
         <span class="time" id="time" >
             <span class="date" style="margin-left: 7px;">{{ nowTime }}</span>
             <span class="hour" style="margin-left: 7px;">{{time.hour}}</span>

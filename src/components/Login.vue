@@ -2,7 +2,7 @@
   <div class="loginBody">
   
     <div class="loginDiv" >
-        <div style="text-align:center;font-size:23px;transform:translate(10px,-70px);font-weight:300;" class="txt">仓 库 管 理 系 统 后 台</div>
+        <div style="text-align:center;font-size:23px;transform:translate(8px,-70px);font-weight:300;" class="txt">仓 库 管 理 系 统 后 台</div>
         <div style="background-color: #000;">
          <div class="login-content" style="opacity: 0.8">
         <div class="login-title" style="transform:translate(0px,-10px);">登 录</div>
@@ -42,7 +42,7 @@
               :disabled="confirm_disabled"
               >确 定</el-button
             >
-            <router-link to="/Register" class="register" style="transform: translate(5px,2px)">没有账号？去注册</router-link>
+            <router-link to="/Register" class="register" style="transform: translate(5px,2px);font-size:12px;">没有账号？去注册</router-link>
           </el-form-item>
         </el-form>
       </div>
@@ -129,9 +129,9 @@ export default {
   top: 50%;
   left: 50%;
   margin-top: -200px;
-  margin-left: -250px;
-  width: 450px;
-  height: 330px;
+  margin-left: -210px;
+  width: 440px;
+  height: 335px;
   border-radius: 0px;
 background: #ffffff;
 box-shadow:  25px 25px 49px #ebebeb,
@@ -159,7 +159,7 @@ box-shadow:  12px 12px 24px #cbcbcb,
 }
 .register{
   text-decoration: none;
-  font-size:5px;
+  font-size:12px;
 color:#1e95fc;
 float: right;
 margin-top:-10px;

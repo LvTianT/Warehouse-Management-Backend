@@ -46,6 +46,17 @@
       <el-table-column prop="outstaff" label="出库人" width="130"  :formatter="formatOutName"> </el-table-column>
       <el-table-column prop="remark" label="备注"> </el-table-column>
     </el-table>
+    <el-pagination
+        style="margin-left: 10px; margin-top: 25px"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pageNum"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+    >
+    </el-pagination>
     <div class="block" style="margin-top: 30px; float: left;margin-bottom:10px;">
       <span
         class="demonstration"
@@ -80,6 +91,7 @@
       >
       </el-date-picker>
     </div>
+
     <el-table
       style="
         margin-left: 10px;
@@ -101,17 +113,7 @@
       <el-table-column prop="outstaff" label="出库人" :formatter="formatOutName"> </el-table-column>
       <el-table-column prop="remark" label="备注"> </el-table-column>
     </el-table>
-    <el-pagination
-      style="margin-left: 10px; margin-top: 25px"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="pageNum"
-      :page-sizes="[5, 10, 15, 20]"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-    >
-    </el-pagination>
+
   </div>
 </template>
 
@@ -465,7 +467,7 @@ export default {
     this.loadStorage();
     this.loadGoodstype();
     this.loadUser();
-    this.loadProducts()
+    this.loadProducts();
   },
 };
 </script>

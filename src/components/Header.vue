@@ -29,8 +29,8 @@
    <i class="el-icon-arrow-down" style="margin-left: 7px"></i>
       <el-dropdown-menu slot="dropdown" style="height:90px;">
            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="transform: translate(30px,-3px);width:25px;height:25px;"></el-avatar>
-        <el-dropdown-item @click.native="toUser" style="font-size: 10px;" >个人中心</el-dropdown-item>
-        <el-dropdown-item @click.native="logOut" style="font-size: 10px;">退出登录</el-dropdown-item>
+        <el-dropdown-item @click.native="toUser" style="font-size: 12px;" >个人中心</el-dropdown-item>
+        <el-dropdown-item @click.native="logOut" style="font-size: 12px;">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -89,7 +89,7 @@ export default {
 <style scoped>
 .header{
   /* background-color: rgb(255, 255, 255); */
- background-color: linear-gradient(rgb(205, 250, 254), rgb(251 255 253));
+ //background-color: linear-gradient(rgb(205, 250, 254), rgb(251 255 253));
  border-bottom:1px solid #e6e6e6;
 }
 .welcome {

@@ -11,7 +11,7 @@
     <el-container style="height: 100%;width: 100%">
      
       <el-header style="width:99.2%;text-align: right;height: 100%;
-    border-radius: 10px; background-color: linear-gradient(rgb(205, 250, 254), rgb(251 255 253));">
+    border-radius: 10px; ">
      <div style="width: 100%;height:50px;">
         <Header @collapse="collapse" :icon="icon" style="transform: translateY(-12px);">
         </Header>

@@ -95,9 +95,9 @@
       border
       @current-change="selectCurrentChange"
     >
-      <el-table-column prop="productId" label="商品编号" width="100">
+      <el-table-column prop="productId" label="商品编号" width="90">
       </el-table-column>
-      <el-table-column prop="productName" label="名称" width="180">
+      <el-table-column prop="productName" label="名称" width="160">
       </el-table-column>
       <el-table-column prop="purchasePrice" label="进价"> </el-table-column>
       <el-table-column prop="salesPrice" label="售价"> </el-table-column>
