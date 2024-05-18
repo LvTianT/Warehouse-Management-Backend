@@ -19,11 +19,7 @@
     <sql id="Base_Column_List">
         TransactionID, InStaff, OutStaff, ProductID, InQuantity, OutQuantity,Intime,Outtime, Remark
     </sql>
-<<<<<<< HEAD
-    <select id="Usertransactionspage" resultType="org.examplorfotg.springbootdemo.entity.Usertransactions">
-=======
     <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Usertransactions">
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         select a.*,b.ProductName productname,c.Name warehousename,d.Name goodstypename,
                (select u.name from user u where u.Id=a.InStaff)instaffname,
                (select u.name from user u where u.Id=a.OutStaff)outstaffname

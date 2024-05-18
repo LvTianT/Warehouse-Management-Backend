@@ -5,16 +5,6 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.User">
         <id column="Id" property="id" />
-<<<<<<< HEAD
-        <result column="No" property="no" />
-        <result column="Name" property="name" />
-        <result column="Password" property="password" />
-        <result column="Age" property="age" />
-        <result column="Sex" property="sex" />
-        <result column="Phone" property="phone" />
-        <result column="roleId" property="roleId" />
-        <result column="IsValid" property="isvalid" />
-=======
         <result column="no" property="no" />
         <result column="name" property="name" />
         <result column="password" property="password" />
@@ -23,18 +13,11 @@
         <result column="phone" property="phone" />
         <result column="roleId" property="roleId" />
         <result column="isValid" property="isvalid" />
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         <result column="email" property="email" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-<<<<<<< HEAD
-        Id, No, Name, Password, Age, Sex, Phone, roleId, IsValid,email
-    </sql>
-
-    <select id="userpage" resultType="org.examplorfotg.springbootdemo.entity.User">
-=======
         Id, no, name, password, age, sex, phone, roleId, isValid,email
     </sql>
     <select id="pageC" resultType="org.examplorfotg.springbootdemo.entity.User">
@@ -42,7 +25,6 @@
     </select>
 
     <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.User">
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         select * from user ${ew.customSqlSegment}
     </select>
 </mapper>

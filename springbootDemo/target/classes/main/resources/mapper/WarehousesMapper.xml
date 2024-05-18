@@ -13,11 +13,7 @@
     <sql id="Base_Column_List">
         warehouseId, Name, Remark
     </sql>
-<<<<<<< HEAD
-    <select id="Warehousepage" resultType="org.examplorfotg.springbootdemo.entity.Warehouses">
-=======
     <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Warehouses">
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         select * from warehouses ${ew.customSqlSegment}
     </select>
 </mapper>
