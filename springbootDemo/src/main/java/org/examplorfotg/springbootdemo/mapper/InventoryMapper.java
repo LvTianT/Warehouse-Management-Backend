@@ -10,5 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface InventoryMapper extends BaseMapper<Inventory> {
-    IPage pageCC(IPage<Inventory> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Inventorypage(IPage<Inventory> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

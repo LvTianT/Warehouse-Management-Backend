@@ -8,5 +8,5 @@ import org.examplorfotg.springbootdemo.entity.Loanregister;
 
 
 public interface InventorycheckService extends IService<Inventorycheck> {
-    IPage pageCC(IPage<Inventorycheck> page, Wrapper wrapper);
+    IPage Inventorycheckpage(IPage<Inventorycheck> page, Wrapper wrapper);
 }

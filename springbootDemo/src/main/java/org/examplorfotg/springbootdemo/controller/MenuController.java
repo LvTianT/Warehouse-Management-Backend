@@ -43,7 +43,7 @@ public class MenuController {
         if(StringUtils.isNotBlank(roleid) && !"null".equals(roleid)){
             lambdaQueryWrapper.like(Menu::getRoleid,roleid);
         }
-        IPage result = menuService.pageCC(page,lambdaQueryWrapper);
+        IPage result = menuService.Menupage(page,lambdaQueryWrapper);
         return Result.suc(result.getRecords(),result.getTotal());
     }
 }

@@ -30,6 +30,7 @@ public class ProductsController {
     //新增
     @PostMapping("/save")
     public Result save(@RequestBody Products products){
+
         return productsService.save(products)?Result.suc():Result.fail();
     }
     @PostMapping("/saveAll")
@@ -44,7 +45,7 @@ public class ProductsController {
         String productsType = (String) param.get("productsType");
         if(StringUtils.isNotBlank(productId) && !"null".equals(productId)){
             lambdaQueryWrapper.like(Inventory::getProductId,productId);
-            IPage result = inventoryService.pageCC(page,lambdaQueryWrapper);
+            IPage result = inventoryService.Inventorypage(page,lambdaQueryWrapper);
             if(result.getRecords().isEmpty()){
                 Inventory Inventory = new Inventory();
                 Inventory.setProductId(Integer.parseInt(productId));
@@ -99,7 +100,7 @@ public class ProductsController {
         if(StringUtils.isNotBlank(warehouseId) && !"null".equals(warehouseId)){
             lambdaQueryWrapper.eq(Products::getWarehouseId,warehouseId);
         }
-        IPage result = productsService.pageCC(page,lambdaQueryWrapper);
+        IPage result = productsService.Productspage(page,lambdaQueryWrapper);
         return Result.suc(result.getRecords(),result.getTotal());
     }
     @GetMapping("/list")

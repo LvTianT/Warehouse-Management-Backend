@@ -43,7 +43,7 @@ public class User implements Serializable {
     private Integer roleId;
 
     @ApiModelProperty(value = "是否有效，Y有效，其他无效")
-    @TableField("isValid")
+    @TableField("IsValid")
     private String isvalid;
     @TableField("email")
     private String email;

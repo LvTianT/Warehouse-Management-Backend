@@ -56,7 +56,7 @@ public class WarehousesController {
             lambdaQueryWrapper.eq(Warehouses::getWarehouseId,warehouseId);
         }
 
-        IPage result = warehousesService.pageCC(page,lambdaQueryWrapper);
+        IPage result = warehousesService.Warehousepage(page,lambdaQueryWrapper);
         return Result.suc(result.getRecords(),result.getTotal());
     }
 

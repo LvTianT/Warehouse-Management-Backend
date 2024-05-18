@@ -9,5 +9,5 @@ import org.examplorfotg.springbootdemo.entity.Usertransactions;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Mapper
 public interface UsertransactionsMapper extends BaseMapper<Usertransactions> {
-    IPage pageCC(IPage<Usertransactions> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage  Usertransactionspage(IPage<Usertransactions> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

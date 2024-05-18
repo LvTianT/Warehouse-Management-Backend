@@ -17,7 +17,7 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper, Products> i
     @Resource
     private ProductsMapper productsMapper;
     @Override
-    public IPage pageCC(IPage<Products> page, Wrapper wrapper) {
-        return productsMapper.pageCC(page,wrapper);
+    public IPage Productspage(IPage<Products> page, Wrapper wrapper) {
+        return productsMapper.Productspage(page,wrapper);
     }
 }

@@ -17,7 +17,7 @@ public class UsertransactionsServiceImpl extends ServiceImpl<UsertransactionsMap
     @Resource
     private UsertransactionsMapper usertransactionsMapper;
     @Override
-    public IPage pageCC(IPage<Usertransactions> page, Wrapper wrapper) {
-        return usertransactionsMapper.pageCC(page,wrapper);
+    public IPage Usertransactionspage(IPage<Usertransactions> page, Wrapper wrapper) {
+        return usertransactionsMapper.Usertransactionspage(page,wrapper);
     }
 }

@@ -7,5 +7,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 
 public interface UsertransactionsService extends IService<Usertransactions> {
-    IPage pageCC(IPage<Usertransactions> page, Wrapper wrapper);
+    IPage Usertransactionspage(IPage<Usertransactions> page, Wrapper wrapper);
 }

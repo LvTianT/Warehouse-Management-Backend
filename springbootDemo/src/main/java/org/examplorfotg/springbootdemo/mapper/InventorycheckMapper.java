@@ -10,5 +10,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Mapper
 public interface InventorycheckMapper extends BaseMapper<Inventorycheck> {
-    IPage pageCC(IPage<Inventorycheck> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Inventorycheckpage(IPage<Inventorycheck> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

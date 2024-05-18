@@ -6,5 +6,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.examplorfotg.springbootdemo.entity.Warehouses;
 
 public interface WarehousesService extends IService<Warehouses> {
-    IPage pageCC(IPage<Warehouses> page, Wrapper wrapper);
+    IPage Warehousepage(IPage<Warehouses> page, Wrapper wrapper);
 }

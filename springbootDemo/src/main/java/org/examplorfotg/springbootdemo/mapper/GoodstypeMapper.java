@@ -10,5 +10,5 @@ import org.examplorfotg.springbootdemo.entity.Goodstype;
 
 @Mapper
 public interface GoodstypeMapper extends BaseMapper<Goodstype> {
-    IPage pageCC(IPage<Goodstype> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Goodstypepage(IPage<Goodstype> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

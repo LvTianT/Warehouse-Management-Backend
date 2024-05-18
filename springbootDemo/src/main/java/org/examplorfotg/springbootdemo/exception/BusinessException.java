@@ -1,6 +1,6 @@
 package org.examplorfotg.springbootdemo.exception;
 
-import org.examplorfotg.springbootdemo.common.ErrorCode;
+import org.examplorfotg.springbootdemo.common. BusinessMsgEnum;
 
 public class BusinessException  extends RuntimeException {
 
@@ -17,13 +17,13 @@ public class BusinessException  extends RuntimeException {
         this.description = description;
     }
 
-    public BusinessException(ErrorCode errorCode) {
+    public BusinessException( BusinessMsgEnum errorCode) {
         super(errorCode.getMessage());
         this.code = errorCode.getCode();
         this.description = errorCode.getDescription();
     }
 
-    public BusinessException(ErrorCode errorCode, String description) {
+    public BusinessException( BusinessMsgEnum errorCode, String description) {
         super(errorCode.getMessage());
         this.code = errorCode.getCode();
         this.description = description;
@@ -33,7 +33,6 @@ public class BusinessException  extends RuntimeException {
         return code;
     }
 
-    // https://t.zsxq.com/0emozsIJh
 
     public String getDescription() {
         return description;

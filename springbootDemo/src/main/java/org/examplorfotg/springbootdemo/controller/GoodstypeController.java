@@ -53,7 +53,7 @@ public class GoodstypeController {
             lambdaQueryWrapper.like(Goodstype::getName,name);
         }
 
-        IPage result = goodstypeService.pageCC(page,lambdaQueryWrapper);
+        IPage result = goodstypeService.Goodstypepage(page,lambdaQueryWrapper);
         return Result.suc(result.getRecords(),result.getTotal());
     }
     @GetMapping("/list")

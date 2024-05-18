@@ -12,5 +12,5 @@ import org.examplorfotg.springbootdemo.entity.Products;
 
 @Mapper
 public interface ProductsMapper extends BaseMapper<Products> {
-    IPage pageCC(IPage<Products> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Productspage(IPage<Products> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

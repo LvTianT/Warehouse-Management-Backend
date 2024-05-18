@@ -10,5 +10,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Mapper
 public interface InventoryalertsMapper extends BaseMapper<Inventoryalerts> {
-    IPage pageCC(IPage<Inventoryalerts> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Inventoryalertspage(IPage<Inventoryalerts> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

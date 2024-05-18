@@ -34,11 +34,20 @@ public class InventoryController {
         return inventoryService.list();
     }
     //查询
+
+    @PostMapping("/listInTime")
+    public Result listInTime(@RequestParam String intime){
+        List list = inventoryService.lambdaQuery().like(Inventory::getInTime,intime).list();
+        return list.size()>0?Result.suc(list):Result.fail();
+    }
+    @PostMapping("/listOutTime")
+    public Result listOutTime(@RequestParam String outtime){
+        List list = inventoryService.lambdaQuery().like(Inventory::getOutTime,outtime).list();
+        return list.size()>0?Result.suc(list):Result.fail();
+    }
     @PostMapping("/listPage")
     public Result listPage(@RequestBody QueryPageParam query) {
         HashMap param = query.getParam();
-        //        String name = (String)param.get("name");
-        //        String productType = (String)param.get("productType");
         String ProductId = (String) param.get("ProductId");
         String warehouseId = (String) param.get("warehouseId");
 
@@ -54,18 +63,19 @@ public class InventoryController {
         if (StringUtils.isNotBlank(warehouseId) && !"null".equals(warehouseId)) {
             lambdaQueryWrapper.eq(Inventory::getWarehouseID, warehouseId);
         }
-        IPage result = inventoryService.pageCC(page, lambdaQueryWrapper);
+        IPage result = inventoryService.Inventorypage(page, lambdaQueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
-    
-    @PostMapping("/listInTime")
-    public Result listInTime(@RequestParam String intime){
-        List list = inventoryService.lambdaQuery().like(Inventory::getInTime,intime).list();
-        return list.size()>0?Result.suc(list):Result.fail();
+
+    @PostMapping("/inventlist")
+    public Result inventlist(@RequestBody QueryPageParam query) {
+        HashMap param = query.getParam();
+        Page<Inventory> page = new Page();
+        page.setCurrent(query.getPageNum());
+        page.setSize(query.getPageSize());
+        LambdaQueryWrapper<Inventory> lambdaQueryWrapper = new LambdaQueryWrapper();
+        IPage result = inventoryService.Inventorypage(page, lambdaQueryWrapper);
+        return Result.suc(result.getRecords(), result.getTotal());
     }
-    @PostMapping("/listOutTime")
-    public Result listOutTime(@RequestParam String outtime){
-        List list = inventoryService.lambdaQuery().like(Inventory::getOutTime,outtime).list();
-        return list.size()>0?Result.suc(list):Result.fail();
-    }
+
 }

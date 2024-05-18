@@ -15,7 +15,7 @@ public class WarehousesServiceImpl extends ServiceImpl<WarehousesMapper, Warehou
     @Resource
     private WarehousesMapper warehousesMapper;
     @Override
-    public IPage pageCC(IPage<Warehouses> page, Wrapper wrapper) {
-        return warehousesMapper.pageCC(page,wrapper);
+    public IPage Warehousepage(IPage<Warehouses> page, Wrapper wrapper) {
+        return warehousesMapper.Warehousepage(page,wrapper);
     }
 }

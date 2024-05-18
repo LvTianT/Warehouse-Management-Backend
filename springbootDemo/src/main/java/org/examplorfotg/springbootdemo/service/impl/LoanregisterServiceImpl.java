@@ -18,7 +18,7 @@ public class LoanregisterServiceImpl extends ServiceImpl<LoanregisterMapper, Loa
     @Resource
     private LoanregisterMapper loanregisterMapper;
     @Override
-    public IPage pageCC(IPage<Loanregister> page, Wrapper wrapper) {
-        return loanregisterMapper.pageCC(page,wrapper);
+    public IPage Loanregisterpage(IPage<Loanregister> page, Wrapper wrapper) {
+        return loanregisterMapper.Loanregisterpage(page,wrapper);
     }
 }

@@ -8,5 +8,5 @@ import org.examplorfotg.springbootdemo.entity.Products;
 
 
 public interface InventoryService extends IService<Inventory> {
-    IPage pageCC(IPage<Inventory> page, Wrapper wrapper);
+    IPage Inventorypage(IPage<Inventory> page, Wrapper wrapper);
 }

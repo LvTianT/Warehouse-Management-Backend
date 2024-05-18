@@ -18,7 +18,7 @@ public class InventoryalertsServiceImpl extends ServiceImpl<InventoryalertsMappe
     @Resource
     private InventoryalertsMapper inventoryalertsMapper;
     @Override
-    public IPage pageCC(IPage<Inventoryalerts> page, Wrapper wrapper) {
-        return inventoryalertsMapper.pageCC(page,wrapper);
+    public IPage Inventoryalertspage(IPage<Inventoryalerts> page, Wrapper wrapper) {
+        return inventoryalertsMapper.Inventoryalertspage(page,wrapper);
     }
 }

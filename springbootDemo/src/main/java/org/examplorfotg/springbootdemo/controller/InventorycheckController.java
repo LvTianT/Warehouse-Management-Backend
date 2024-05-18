@@ -51,8 +51,8 @@ public class InventorycheckController {
         List list =inventorycheckService.lambdaQuery().like(Inventorycheck::getCheckdate,datetime).list();
         return list.size()>0?Result.suc(list):Result.fail();
     }
-    @PostMapping("/listPageC1")
-    public Result listPageC1(@RequestBody QueryPageParam query){
+    @PostMapping("/Checklist")
+    public Result Checklist(@RequestBody QueryPageParam query){
         HashMap param = query.getParam();
         String checker = (String)param.get("checker");
         Page<Inventorycheck> page = new Page();
@@ -64,8 +64,7 @@ public class InventorycheckController {
             lambdaQueryWrapper.like(Inventorycheck::getChecker,checker);
         }
 
-        //IPage result = userService.pageC(page);
-        IPage result = inventorycheckService.pageCC(page,lambdaQueryWrapper);
+        IPage result = inventorycheckService.Inventorycheckpage(page,lambdaQueryWrapper);
 
         System.out.println("total=="+result.getTotal());
 

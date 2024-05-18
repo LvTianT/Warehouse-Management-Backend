@@ -18,7 +18,7 @@ public class InventoryServiceImpl extends ServiceImpl<InventoryMapper, Inventory
     @Resource
     private InventoryMapper inventoryMapper;
     @Override
-    public IPage pageCC(IPage<Inventory> page, Wrapper wrapper) {
-        return inventoryMapper.pageCC(page,wrapper);
+    public IPage Inventorypage(IPage<Inventory> page, Wrapper wrapper) {
+        return inventoryMapper.Inventorypage(page,wrapper);
     }
 }

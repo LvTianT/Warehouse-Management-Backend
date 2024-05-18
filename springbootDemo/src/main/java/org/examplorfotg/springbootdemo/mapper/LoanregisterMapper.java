@@ -10,5 +10,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Mapper
 public interface LoanregisterMapper extends BaseMapper<Loanregister> {
-    IPage pageCC(IPage<Loanregister> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Loanregisterpage(IPage<Loanregister> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

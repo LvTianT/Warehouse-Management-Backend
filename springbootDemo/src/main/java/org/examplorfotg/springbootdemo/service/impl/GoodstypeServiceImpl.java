@@ -18,7 +18,7 @@ public class GoodstypeServiceImpl extends ServiceImpl<GoodstypeMapper, Goodstype
     @Resource
     private GoodstypeMapper goodstypeMapper;
     @Override
-    public IPage pageCC(IPage<Goodstype> page, Wrapper wrapper) {
-        return goodstypeMapper.pageCC(page,wrapper);
+    public IPage Goodstypepage(IPage<Goodstype> page, Wrapper wrapper) {
+        return goodstypeMapper.Goodstypepage(page,wrapper);
     }
 }

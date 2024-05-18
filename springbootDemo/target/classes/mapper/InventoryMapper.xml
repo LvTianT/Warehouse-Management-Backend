@@ -15,7 +15,7 @@
     <sql id="Base_Column_List">
         ProductID, WarehouseID, Quantity,intime,outtime
     </sql>
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Inventory">
+    <select id="Inventorypage" resultType="org.examplorfotg.springbootdemo.entity.Inventory">
         select * from inventory
             ${ew.customSqlSegment}
     </select>

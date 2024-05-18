@@ -8,5 +8,5 @@ import org.examplorfotg.springbootdemo.entity.Products;
 import org.examplorfotg.springbootdemo.entity.User;
 
 public interface MenuService extends IService<Menu> {
-    IPage pageCC(IPage<Menu> page, Wrapper wrapper);
+    IPage Menupage(IPage<Menu> page, Wrapper wrapper);
 }

@@ -12,6 +12,9 @@ public class Result {
     public static Result fail() {
         return result(400, "失败", 0L, null);
     }
+    public static Result NullFormAlert() {
+        return result(400, "请填写表格！", 0L, null);
+    }
     public static Result lowAlert() {
         return result(400, "商品库存不足,无法出库,请即时补货!", 0L, null);
     }

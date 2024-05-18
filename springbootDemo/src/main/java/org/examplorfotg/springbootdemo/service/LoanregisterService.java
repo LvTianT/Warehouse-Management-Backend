@@ -8,5 +8,5 @@ import org.examplorfotg.springbootdemo.entity.Products;
 
 
 public interface LoanregisterService extends IService<Loanregister> {
-    IPage pageCC(IPage<Loanregister> page, Wrapper wrapper);
+    IPage Loanregisterpage(IPage<Loanregister> page, Wrapper wrapper);
 }

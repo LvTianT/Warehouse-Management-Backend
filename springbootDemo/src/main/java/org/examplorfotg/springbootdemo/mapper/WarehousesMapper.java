@@ -10,5 +10,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Mapper
 public interface WarehousesMapper extends BaseMapper<Warehouses> {
-    IPage pageCC(IPage<Warehouses> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage Warehousepage(IPage<Warehouses> page, @Param(Constants.WRAPPER) Wrapper wrapper);
 }

@@ -1,7 +1,7 @@
 package org.examplorfotg.springbootdemo.exception;
 import lombok.extern.slf4j.Slf4j;
 import org.examplorfotg.springbootdemo.common.BaseResponse;
-import org.examplorfotg.springbootdemo.common.ErrorCode;
+import org.examplorfotg.springbootdemo.common.BusinessMsgEnum;
 import org.examplorfotg.springbootdemo.common.ResultUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,6 +18,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
       public BaseResponse<?> runtimeExceptionHandler(RuntimeException e){
           log.error("runtimeException: " , e);
-          return ResultUtils.error(ErrorCode.SYSTEM_ERROR, e.getMessage(), "");
+          return ResultUtils.error( BusinessMsgEnum.SYSTEM_ERROR, e.getMessage(), "");
       }
 }

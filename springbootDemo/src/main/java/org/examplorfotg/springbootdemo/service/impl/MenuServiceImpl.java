@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.examplorfotg.springbootdemo.entity.Menu;
 import org.examplorfotg.springbootdemo.entity.Products;
+import org.examplorfotg.springbootdemo.entity.User;
 import org.examplorfotg.springbootdemo.entity.Usertransactions;
 import org.examplorfotg.springbootdemo.mapper.MenuMapper;
 import org.examplorfotg.springbootdemo.mapper.ProductsMapper;
@@ -19,7 +20,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     @Resource
     private MenuMapper menuMapper;
     @Override
-    public IPage pageCC(IPage<Menu> page, Wrapper wrapper) {
-        return menuMapper.pageCC(page,wrapper);
+    public IPage Menupage(IPage<Menu> page, Wrapper wrapper) {
+        return  menuMapper.Menupage(page, wrapper);
     }
+
 }

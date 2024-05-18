@@ -8,5 +8,5 @@ import org.examplorfotg.springbootdemo.entity.Loanregister;
 
 
 public interface InventoryalertsService extends IService<Inventoryalerts> {
-    IPage pageCC(IPage<Inventoryalerts> page, Wrapper wrapper);
+    IPage Inventoryalertspage(IPage<Inventoryalerts> page, Wrapper wrapper);
 }
