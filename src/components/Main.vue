@@ -423,7 +423,6 @@ export default {
     },
   },
   beforeMount() {
-    //this.loadGet();
     this.loadPost();
   },
 };

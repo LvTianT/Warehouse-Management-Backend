@@ -122,7 +122,7 @@
         <template slot-scope="scope">
           <el-popconfirm
             title="确定删除此记录吗？"
-            @confirm="del(scope.row.loanid)"
+            @confirm="del(scope.row.inventorycheckid)"
             type="text"
           >
             <el-button

@@ -748,19 +748,21 @@ export default {
           }
         })
         .then((res) => {
-          console.log(res)
+          // console.log(res.data)
           if(res.data.msg==="请填写表格！"){
             this.$message({
               message: "请填写表格！",
               type: "error",
-            });
+            })
           }
-          else if (res.data.msg==="商品库存不足,无法出库") {
+          else if (res.data.code==400&&res.data.msg=="商品库存不足,无法出库,请即时补货!") {
+            console.log(res.data)
             this.$message({
-              message: "商品库存不足,无法出库！",
+              message: "商品库存不足，无法出库，请即时补货！",
               type: "error",
             });
-          } else if (res.status == 200) {
+          } else if (res.data.code== 200) {
+            // console.log(res)
             this.$message({
               message: "出库成功！",
               type: "success",
@@ -770,6 +772,7 @@ export default {
             this.loadInventory();
             this.resetInForm();
           } else {
+            console.log(res.data)
             this.$message({
               message: "出库失败！",
               type: "error",
