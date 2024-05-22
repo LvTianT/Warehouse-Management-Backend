@@ -15,7 +15,7 @@
     <sql id="Base_Column_List">
         InventoryCheckID, ProductID, CheckedQuantity, CheckDate, Checker
     </sql>
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Inventorycheck">
+    <select id="Inventorycheckpage" resultType="org.examplorfotg.springbootdemo.entity.Inventorycheck">
         select * from inventorycheck
                         ${ew.customSqlSegment}
     </select>

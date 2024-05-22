@@ -10,4 +10,4 @@ spring:
 
 Logging:
   level:
-    com.wms: debug
+    org.examplorfotg: debug

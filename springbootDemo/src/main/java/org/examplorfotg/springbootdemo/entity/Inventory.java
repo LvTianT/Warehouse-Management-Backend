@@ -30,7 +30,7 @@ public class Inventory implements Serializable {
 
     @ApiModelProperty(value = "仓库ID")
     @TableField("WarehouseID")
-    private Integer warehouseID;
+    private Integer warehouseId;
 
     @ApiModelProperty(value = "库存数量")
     @TableField("Quantity")

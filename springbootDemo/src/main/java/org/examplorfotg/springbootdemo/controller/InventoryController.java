@@ -27,6 +27,7 @@ public class InventoryController {
     //新增
     @PostMapping("/save")
     public Result save(@RequestBody Inventory inventory){
+        inventory.setOutTime(null);
         return inventoryService.save(inventory)?Result.suc():Result.fail();
     }
     @GetMapping("/list")
@@ -61,7 +62,7 @@ public class InventoryController {
             lambdaQueryWrapper.eq(Inventory::getProductId, ProductId);
         }
         if (StringUtils.isNotBlank(warehouseId) && !"null".equals(warehouseId)) {
-            lambdaQueryWrapper.eq(Inventory::getWarehouseID, warehouseId);
+            lambdaQueryWrapper.eq(Inventory::getWarehouseId, warehouseId);
         }
         IPage result = inventoryService.Inventorypage(page, lambdaQueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());

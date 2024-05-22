@@ -8,9 +8,11 @@ import org.examplorfotg.springbootdemo.common.QueryPageParam;
 import org.examplorfotg.springbootdemo.common.Result;
 import org.examplorfotg.springbootdemo.entity.Inventory;
 import org.examplorfotg.springbootdemo.entity.Inventoryalerts;
+import org.examplorfotg.springbootdemo.entity.Products;
 import org.examplorfotg.springbootdemo.entity.Usertransactions;
 import org.examplorfotg.springbootdemo.service.InventoryService;
 import org.examplorfotg.springbootdemo.service.InventoryalertsService;
+import org.examplorfotg.springbootdemo.service.ProductsService;
 import org.examplorfotg.springbootdemo.service.UsertransactionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,8 @@ public class UsertransactionsController {
     private InventoryService inventoryService;
     @Autowired
     private InventoryalertsService inventoryalertsService;
+    @Autowired
+    private ProductsService productsService;
 
     @GetMapping("/list")
     public List<Usertransactions> list() {
@@ -41,43 +45,61 @@ public class UsertransactionsController {
     @PostMapping("/savein")
     public Result savein(@RequestBody Usertransactions usertransactions) {
         Inventory inventory = inventoryService.getById(usertransactions.getProductid());
-        Inventoryalerts inventoryalerts = inventoryalertsService.getById(usertransactions.getProductid());
-        Integer total = inventory.getQuantity();
-        Integer instaff=(Integer)usertransactions.getInstaff();
-        Integer  inquantity=usertransactions.getInquantity();
-        if(inquantity==null||inquantity==0||instaff==null||instaff==0){
-            return Result.NullFormAlert();
+        Products products= productsService.getById(usertransactions.getProductid());
+        Integer warehouseID=products.getWarehouseId();
+        if(inventory==null){
+           Inventory inventory1= new Inventory();
+           inventory1.setProductId(usertransactions.getProductid());
+           inventory1.setQuantity(usertransactions.getInquantity());
+           inventory1.setInTime(LocalDateTime.now());
+           inventory1.setWarehouseId(warehouseID);
+            if ("1".equals(usertransactions.getAction())) {
+                LocalDateTime inventoryDateTime = LocalDateTime.now();
+                usertransactions.setIntime(inventoryDateTime);
+            }
+            //如果入库记录添加成功并且库存更新成功，返回添加成功，否则返回失败
+            return usertransactionsService.save(usertransactions)&& inventoryService.save(inventory1)? Result.suc() : Result.fail();
         }
-        //管理员点击入库，触发事件1，商品增加n个，同时更新入库时间
-       if ("1".equals(usertransactions.getAction()) ) {
-            Integer innum = usertransactions.getInquantity();
-            total += innum;
-            inventory.setQuantity(total);
-            LocalDateTime inventoryDateTime = LocalDateTime.now();
-            inventory.setInTime(inventoryDateTime);
-            usertransactions.setIntime(inventoryDateTime);
-            usertransactions.setInquantity(innum);
-            inventoryService.updateById(inventory);
+        else {
+            Inventoryalerts inventoryalerts = inventoryalertsService.getById(usertransactions.getProductid());
+            Integer total = inventory.getQuantity();
+            Integer instaff = usertransactions.getInstaff();
+            Integer inquantity = usertransactions.getInquantity();
+            if (inquantity == null || inquantity == 0 || instaff == null || instaff == 0) {
+                return Result.NullFormAlert();
+            }
+            //管理员点击入库，触发事件1，商品增加n个，同时更新入库时间
+            if ("1".equals(usertransactions.getAction())) {
+                Integer innum = usertransactions.getInquantity();
+                total += innum;
+                inventory.setQuantity(total);
+                LocalDateTime inventoryDateTime = LocalDateTime.now();
+                inventory.setInTime(inventoryDateTime);
+                usertransactions.setIntime(inventoryDateTime);
+                usertransactions.setInquantity(innum);
+            }
+            //如果入库记录添加成功并且库存更新成功，返回添加成功，否则返回失败
+            return usertransactionsService.save(usertransactions) && inventoryService.updateById(inventory) ? Result.suc() : Result.fail();
         }
-        //如果入库记录添加成功并且库存更新成功，返回添加成功，否则返回失败
-        return usertransactionsService.save(usertransactions) && inventoryService.updateById(inventory) ? Result.suc() : Result.fail();
     }
 
+    //出库及预警功能
     @PostMapping("/saveout")
     public Result saveout(@RequestBody QueryPageParam query) {
         HashMap param = query.getParam();
+        //获取商品的所有参数
         Integer productid = (Integer) param.get("productid");
         String action = (String) param.get("action");
         String num1=(String)param.get("outquantity");
         String outstaffname = (String) param.get("outstaffname");
-        System.out.println("outstaffname=="+outstaffname);
         System.out.println("num1=="+num1);
+        //判断用户是否填写完整出库单
         if(StringUtils.isAnyBlank(action,num1,outstaffname)){
             return Result.NullFormAlert();
         }else
         {
+        //获取出库数量
         Integer outquantity =  Integer.parseInt(num1);
-        System.out.println("outquantity=="+outquantity);
         Integer outstaff = (Integer) param.get("outstaff");
         Page<Inventory> page = new Page();
         page.setCurrent(query.getPageNum());
@@ -87,6 +109,7 @@ public class UsertransactionsController {
         page1.setSize(query.getPageSize());
         LambdaQueryWrapper<Inventoryalerts> lambdaQuery = new LambdaQueryWrapper();
         lambdaQuery.eq(Inventoryalerts::getProductid, productid);
+        //根据商品id从预警表中获取该商品库存下限
         IPage result1 = inventoryalertsService.Inventoryalertspage(page1, lambdaQuery);
         Inventoryalerts inventoryalerts = (Inventoryalerts) result1.getRecords().get(0);
         Integer lowerlimit = inventoryalerts.getLowerlimit();
@@ -96,28 +119,28 @@ public class UsertransactionsController {
             IPage result = inventoryService.Inventorypage(page, lambdaQueryWrapper);
             Inventory inventory = (Inventory) result.getRecords().get(0);
             Integer total = inventory.getQuantity();
-            int afterdecrease = total - outquantity;
-
-                System.out.println("outquantity==" +outquantity);
-                if (afterdecrease <= lowerlimit) {
-                    System.out.println("afterdecrease==" + afterdecrease);
+              int afterdecrease = total - outquantity;
+              //如果出库后低于或等于下限，返回库存不足预警
+                  if (afterdecrease <= lowerlimit) {
                     return Result.lowAlert();
                 }
                 //管理员点击出库，触发事件2，商品减少n个，同时更新出库时间
                 else if (action.equals("2")) {
                     LocalDateTime outtime = LocalDateTime.now();
                     Usertransactions usertransactions = new Usertransactions();
+                    //新增一条出库记录，记录本次出库时间
                     usertransactions.setOutquantity(outquantity);
                     usertransactions.setOutstaff(outstaff);
                     usertransactions.setOuttime(outtime);
                     usertransactions.setProductid(productid);
                     System.out.println("afterdecrease==" + afterdecrease);
+                    //修改商品库存
                     inventory.setQuantity(afterdecrease);
                     LocalDateTime inventoryDateTime = LocalDateTime.now();
+                    //修改商品最后一次出库时间
                     inventory.setOutTime(inventoryDateTime);
                     inventoryService.updateById(inventory);
                     return usertransactionsService.save(usertransactions) && inventoryService.updateById(inventory) ? Result.suc() : Result.fail();
-
             }
           }
         }

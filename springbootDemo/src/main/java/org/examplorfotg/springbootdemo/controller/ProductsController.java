@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,39 +34,25 @@ public class ProductsController {
 
         return productsService.save(products)?Result.suc():Result.fail();
     }
-    @PostMapping("/saveAll")
-    public Result saveAll(@RequestBody QueryPageParam query){
-        HashMap param = query.getParam();
-        Page<Inventory> page = new Page();
-        page.setCurrent(query.getPageNum());
-        page.setSize(query.getPageSize());
-        LambdaQueryWrapper<Inventory> lambdaQueryWrapper = new LambdaQueryWrapper();
-        String productId = (String) param.get("productId");
-        String warehouseId = (String) param.get("warehouseId");
-        String productsType = (String) param.get("productsType");
-        if(StringUtils.isNotBlank(productId) && !"null".equals(productId)){
-            lambdaQueryWrapper.like(Inventory::getProductId,productId);
-            IPage result = inventoryService.Inventorypage(page,lambdaQueryWrapper);
-            if(result.getRecords().isEmpty()){
-                Inventory Inventory = new Inventory();
-                Inventory.setProductId(Integer.parseInt(productId));
-                Inventory.setWarehouseID(Integer.parseInt(warehouseId));
-                Products product=new Products();
-                product.setProductId(Integer.parseInt(productId));
-                product.setProductName((String) param.get("productName"));
-                product.setSupplier((String) param.get("supplier"));
-                BigDecimal purchasePrice = new BigDecimal(String.valueOf(param.get("purchasePrice")));
-                product.setPurchasePrice(purchasePrice);
-                BigDecimal salesPrice = new BigDecimal(String.valueOf(param.get("salesPrice")));
-                product.setSalesPrice(salesPrice);
-                product.setProductsType((Integer) param.get("productsType"));
-                product.setWarehouseId(Integer.parseInt(warehouseId));
-                product.setProductDescription((String)param.get("productDescription"));
-                return productsService.save(product)?Result.suc():Result.fail();
-           }
-        }
-        return Result.fail();
-    }
+//    @PostMapping("/saveAll")
+//    public Result saveAll(@RequestBody Inventory inventory, @RequestBody Products products){
+//        Inventory inventory1=new Inventory();
+//        inventory1.setProductId(inventory.getProductId());
+//        inventory1.setWarehouseId(inventory.getWarehouseId());
+//        inventory1.setQuantity(inventory.getQuantity());
+//        inventory1.setInTime(LocalDateTime.now());
+//        Products products1=new Products();
+//        products1.setProductId(products.getProductId());
+//        products1.setProductsType(products.getProductsType());
+//        products1.setProductName(products.getProductName());
+//        products1.setSalesPrice(products.getSalesPrice());
+//        products1.setPurchasePrice(products.getPurchasePrice());
+//        products1.setWarehouseId(products.getWarehouseId());
+//        products1.setProductDescription(products.getProductDescription());
+//        products1.setSupplier(products.getSupplier());
+//        return inventoryService.save(inventory1)&& productsService.save(products1)?Result.suc():Result.fail();
+//
+//    }
 
     //更新
     @PostMapping("/update")

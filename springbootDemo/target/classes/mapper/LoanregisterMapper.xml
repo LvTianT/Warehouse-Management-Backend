@@ -16,11 +16,7 @@
     <sql id="Base_Column_List">
         LoanID, ProductID, Quantity, Date, Borrower,operate
     </sql>
-<<<<<<< HEAD
     <select id="Loanregisterpage" resultType="org.examplorfotg.springbootdemo.entity.Loanregister">
-=======
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Loanregister">
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         select * from loanregister
             ${ew.customSqlSegment}
     </select>

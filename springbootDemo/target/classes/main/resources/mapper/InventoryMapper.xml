@@ -5,7 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.Inventory">
         <id column="ProductID" property="productId" />
-        <result column="WarehouseID" property="warehouseID" />
+        <result column="WarehouseID" property="warehouseId" />
         <result column="Quantity" property="quantity" />
         <result column="intime" property="inTime" />
         <result column="outtime" property="outTime" />
@@ -15,7 +15,7 @@
     <sql id="Base_Column_List">
         ProductID, WarehouseID, Quantity,intime,outtime
     </sql>
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Inventory">
+    <select id="Inventorypage" resultType="org.examplorfotg.springbootdemo.entity.Inventory">
         select * from inventory
             ${ew.customSqlSegment}
     </select>

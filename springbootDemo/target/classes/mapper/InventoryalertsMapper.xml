@@ -15,11 +15,7 @@
     <sql id="Base_Column_List">
         AlertID, ProductID, LowerLimit, UpperLimit, AlertLevel
     </sql>
-<<<<<<< HEAD
     <select id="Inventoryalertspage" resultType="org.examplorfotg.springbootdemo.entity.Inventoryalerts">
-=======
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Inventoryalerts">
->>>>>>> c5506309be2abd7d617025266fed2031e8ab6730
         select * from inventoryalerts
                           ${ew.customSqlSegment}
     </select>

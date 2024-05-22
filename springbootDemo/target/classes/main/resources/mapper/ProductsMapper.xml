@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.examplorfotg.springbootdemo.mapper.ProductsMapper">
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.Products">
+    <select id="Productspage" resultType="org.examplorfotg.springbootdemo.entity.Products">
         select * from products
             ${ew.customSqlSegment}
     </select>
@@ -14,11 +14,11 @@
         <result column="Supplier" property="supplier" />
         <result column="productsType" property="productsType" />
         <result column="WarehouseID" property="warehouseId" />
-        <result column="productDescription" property="productDescription" />
+        <result column="ProductDescription" property="productDescription" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ProductID, ProductName, PurchasePrice, SalesPrice, Supplier, productsType, productDescription,WarehouseID
+        ProductID, ProductName, PurchasePrice, SalesPrice, Supplier, productsType, ProductDescription,WarehouseID
     </sql>
 </mapper>

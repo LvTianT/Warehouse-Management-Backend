@@ -58,16 +58,11 @@ public class InventorycheckController {
         Page<Inventorycheck> page = new Page();
         page.setCurrent(query.getPageNum());
         page.setSize(query.getPageSize());
-
         LambdaQueryWrapper<Inventorycheck> lambdaQueryWrapper = new LambdaQueryWrapper();
         if(StringUtils.isNotBlank(checker) && !"null".equals(checker)){
             lambdaQueryWrapper.like(Inventorycheck::getChecker,checker);
         }
-
         IPage result = inventorycheckService.Inventorycheckpage(page,lambdaQueryWrapper);
-
-        System.out.println("total=="+result.getTotal());
-
         return Result.suc(result.getRecords(),result.getTotal());
     }
 }

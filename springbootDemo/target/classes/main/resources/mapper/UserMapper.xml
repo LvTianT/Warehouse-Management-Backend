@@ -5,26 +5,23 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.examplorfotg.springbootdemo.entity.User">
         <id column="Id" property="id" />
-        <result column="no" property="no" />
-        <result column="name" property="name" />
-        <result column="password" property="password" />
-        <result column="age" property="age" />
-        <result column="sex" property="sex" />
-        <result column="phone" property="phone" />
+        <result column="No" property="no" />
+        <result column="Name" property="name" />
+        <result column="Password" property="password" />
+        <result column="Age" property="age" />
+        <result column="Sex" property="sex" />
+        <result column="Phone" property="phone" />
         <result column="roleId" property="roleId" />
-        <result column="isValid" property="isvalid" />
+        <result column="IsValid" property="isvalid" />
         <result column="email" property="email" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        Id, no, name, password, age, sex, phone, roleId, isValid,email
+        Id, No, Name, Password, Age, Sex, Phone, roleId, IsValid,email
     </sql>
-    <select id="pageC" resultType="org.examplorfotg.springbootdemo.entity.User">
-        select * from user
-    </select>
 
-    <select id="pageCC" resultType="org.examplorfotg.springbootdemo.entity.User">
+    <select id="userpage" resultType="org.examplorfotg.springbootdemo.entity.User">
         select * from user ${ew.customSqlSegment}
     </select>
 </mapper>

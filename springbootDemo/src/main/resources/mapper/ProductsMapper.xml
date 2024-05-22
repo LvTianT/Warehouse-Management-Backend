@@ -14,11 +14,11 @@
         <result column="Supplier" property="supplier" />
         <result column="productsType" property="productsType" />
         <result column="WarehouseID" property="warehouseId" />
-        <result column="productDescription" property="productDescription" />
+        <result column="ProductDescription" property="productDescription" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ProductID, ProductName, PurchasePrice, SalesPrice, Supplier, productsType, productDescription,WarehouseID
+        ProductID, ProductName, PurchasePrice, SalesPrice, Supplier, productsType, ProductDescription,WarehouseID
     </sql>
 </mapper>
